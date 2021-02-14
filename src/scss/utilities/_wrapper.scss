@@ -1,0 +1,29 @@
+.u-wrapper {
+    &, &--reading {
+        height: 100%;
+        margin: 0 auto;
+        padding-left: space();
+        padding-right: space();
+    }
+
+    &:not(.u-wrapper--reading) {
+        @include breakpoint($s768) {
+            padding-left: space(2);
+            padding-right: space(2);
+        }
+    }
+
+    &--maxwidth {
+        max-width: $global-max-width;
+    }
+
+    &--reading {
+        max-width: $reader-width;
+
+        @include breakpoint-maxwidth($reader-width) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+

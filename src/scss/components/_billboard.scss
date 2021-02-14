@@ -1,0 +1,36 @@
+.billboard {
+    background-position: 90%;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-top: space();
+    overflow: hidden;
+    position: relative;
+
+    // .touch & { height: 90vh; }
+
+    &__buttons {
+        background-color: $c-white;
+        border-bottom: 1px solid $c-border;
+        border-top: 1px solid $c-border;
+        padding: space(.6) 0;
+    }
+
+    &__content {
+        min-height: get-rems(470px);
+        @include breakpoint($s768) {
+            min-height: get-rems(250px);
+        }
+    }
+
+    &__text {
+        max-width: 100%;
+        @include breakpoint($s768) {
+            max-width: 50%;
+        }
+    }
+
+    @include breakpoint($s768) {
+        background-position-y: center;
+    }
+}

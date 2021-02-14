@@ -1,0 +1,13 @@
+.u-center { margin: 0 auto; }
+.u-fullwidth { width: 100%; }
+
+.u-close {
+
+    svg {
+        width: get-rems(8px) !important;
+
+        fill: $c-neutro300 !important;
+    }
+}
+
+.u-nomargin { margin:0 !important; }

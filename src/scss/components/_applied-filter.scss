@@ -1,0 +1,53 @@
+.applied-filter {
+    background-color: $c-neutro200;
+    border: 1px solid $c-neutro300;
+    border-radius: get-rems(5px);
+    color: $c-neutro700;
+    font-weight: 500;
+    margin: 0 space(.5) 0 0;
+    padding: .5rem;
+
+    &--icon {
+        background-color: $c-neutro300;
+        border-radius: 50%;
+        height: get-rems(25px);
+        margin-right: space(.5);
+        width: get-rems(25px);
+    }
+
+    svg {
+        @include square(12px);
+
+        fill: $c-neutro700;
+    }
+
+    &--filter1 {
+        .applied-filter--icon {
+            background-color: $c-filter1-op;
+        }
+    }
+
+    &--place {
+        .applied-filter--icon {
+            background-color: $c-filter1-op;
+        }
+    }
+
+    &--filter3 {
+        .applied-filter--icon {
+            background-color: $c-filter1-op;
+        }
+    }
+
+    &--filter4 {
+        .applied-filter--icon {
+            background-color: $c-filter1-op;
+        }
+    }
+
+    &--filter5 {
+        .applied-filter--icon {
+            background-color: $c-filter1-op;
+        }
+    }
+}

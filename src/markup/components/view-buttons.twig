@@ -1,0 +1,18 @@
+<div class="view-buttons u-flex">
+    <div class="view-buttons__btn cta cta--hollow p-small" id="js-btn-tableview">
+        {% embed "../helpers/wrapper-svg.twig" %}
+            {% block wrapper %}
+            	{% include '../svg/icon-table.twig' %}
+            {% endblock %}
+        {% endembed %}
+        <span>Tabla</span>
+    </div>
+    <div class="view-buttons__btn cta cta--hollow p-small" id="js-btn-mapview">
+        {% embed "../helpers/wrapper-svg.twig" %}
+            {% block wrapper %}
+            	{% include '../svg/icon-world.twig' %}
+            {% endblock %}
+        {% endembed %}
+        <span>Mapa</span>
+    </div>
+</div>

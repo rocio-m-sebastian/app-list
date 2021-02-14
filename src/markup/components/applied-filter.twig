@@ -1,0 +1,16 @@
+{% set text = text|default('') %}
+{% set class = class|default('') %}
+
+<div class="applied-filter u-flex {{ class }}">
+    <div class="applied-filter--icon u-flex u-flex--center">
+        <span class="wrapper-svg u-icon u-flex--inline u-close" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
+            {% include '../svg/icon-hospital.twig' %}
+        </span>
+    </div>
+    <div>
+        <span class="p-small">{{ text }}</span>
+        <span class="wrapper-svg u-icon u-flex--inline u-close" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
+            {% include '../svg/icon-close.twig' %}
+        </span>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+/**
+ * Tables
+ */
+
+// Table expands to full width of containing element
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    color: $c-neutro700;
+    max-width: 100%;
+    width: 100%;
+}
+
+// Extra border underneath header
+thead th {
+    border-bottom: 2px solid $c-neutro800;
+}
+
+// Extra border above footer
+tfoot th {
+    border-top: 2px solid $c-neutro800;
+}
+
+td {
+    border-bottom: 1px solid $c-neutro800;
+}
+
+th,
+td {
+    padding: .5rem;
+    text-align: center;
+}
+
+caption {
+    caption-side: bottom;
+    padding: $padding 0;
+    // color: $caption;
+}
+
+.striped-table tbody tr:nth-child(odd) {
+    background-color: $stripes;
+}
+
+// Container for responsive tables
+.contain-table {
+    overflow-x: auto;
+}
+
+// @include small-breakpoint {
+//     .contain-table {
+//     width: 100%;
+//     }
+// }

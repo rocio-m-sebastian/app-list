@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{% block locale %}es{% endblock %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="page {% block page_class %}{% endblock %}">
+        {% block header %}
+            {% include '../components/header.twig' %}
+        {% endblock %}
+        <main class="main" role="main">
+            {% block main %}{% endblock %}
+        </main>
+        {% block footer %}{% endblock %}
+    </div>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

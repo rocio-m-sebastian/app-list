@@ -1,0 +1,23 @@
+{% extends '../src/markup/layouts/default.twig' %}
+
+{% block page_class %}home{% endblock %}
+{% block content %}
+    {% include '../src/markup/components/billboard.twig' %}
+    <section class="home__content u-wrapper u-flex">
+        <aside class="home__aside">
+            {% include '../src/markup/components/filters.twig' %}
+        </aside>
+        <main class="home__main">
+            <div class="home__section">
+                <h2>Filtros aplicados</h2>
+                {% include '../src/markup/components/applied-filters-list.twig' %}
+            </div>
+            <div class="home__section">
+                {% include '../src/markup/components/map.twig' %}
+            </div>
+            <div class="home__section">
+                {% include '../src/markup/components/table-view.twig' %}
+            </div>
+        </main>
+    </section>
+{% endblock %}

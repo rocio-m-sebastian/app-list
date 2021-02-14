@@ -1,0 +1,15 @@
+<div class="applied-filters-list u-flex" id="js-applied-filters-list">
+    <div class="applied-filters-list--citie">
+        {% include '../components/applied-filter.twig' %}
+    </div>
+    <div class="applied-filters-list--subject">
+        {% include '../components/applied-filter.twig' %}
+    </div>
+    <div class="applied-filters-list--center">
+        {% include '../components/applied-filter.twig' %}
+    </div>
+    {% include '../components/applied-filter.twig' with { 
+    'text':'Clear',
+    'class': 'clear'
+    } %}
+</div>

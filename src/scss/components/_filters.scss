@@ -1,0 +1,69 @@
+.filters {
+    margin-top: space(.5);
+
+    &__title {
+        margin: 0 .5rem 1rem .5rem;
+        padding: .25rem .5rem;
+    }
+
+    &__close {
+        display: inline-block;
+        position: absolute;
+        right: space();
+        top: space();
+
+        svg {
+            @include square(20px);
+
+            fill: $c-neutro700;
+        }
+    }
+
+    &__item {
+        display: block;
+        margin: 0 .5rem;
+        padding: .25rem .5rem;
+        position: relative;
+        text-decoration: none;
+
+        svg {
+            margin-right: space(.25);
+            opacity: .7;
+
+            @include square(18px);
+        }
+
+        @include breakpoint($s768) {
+            padding: .25rem .25rem .5rem 0;
+        }
+    }
+
+    &__item--filter1 {
+        svg { fill: $c-filter1; }
+    }
+
+    &__item--place {
+        svg { fill: $c-filter2; }
+    }
+
+    &__item--filter3 {
+        svg { fill: $c-filter3; }
+    }
+
+    &__item--filter4 {
+        svg { fill: $c-filter4; }
+    }
+
+    &__item--filter5 {
+        svg { fill: $c-filter5; }
+    }
+
+    &__arrow {
+        svg {
+            fill: $c-neutro700;
+            margin-left: space(.25);
+
+            @include square(10px);
+        }
+    }
+}

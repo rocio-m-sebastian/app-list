@@ -1,0 +1,5 @@
+.view-buttons {
+    &__btn:not(:last-child) {
+        margin-right: space(.5);
+    }
+}

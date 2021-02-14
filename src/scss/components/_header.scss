@@ -1,0 +1,15 @@
+.header {
+    left: 0;
+    padding: space() 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    @include breakpoint($s768) {
+        padding: space(1.2) 0;
+    }
+
+    &__logo {
+        color: $c-secondary200;
+    }
+}

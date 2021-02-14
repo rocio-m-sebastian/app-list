@@ -1,0 +1,44 @@
+.home {
+    position: relative;
+
+    @include breakpoint-max($s768) {
+        > .u-wrapper { padding: 0; }
+    }
+
+    &__content {
+        padding-bottom: space(2);
+
+        @include breakpoint($s768) {
+            padding-bottom: space(3);
+        }
+    }
+
+    &__aside {
+        height: 70vh;
+        background: $c-white;
+        border-bottom: 1px solid $c-border;
+        left: 0;
+        padding: .5rem;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+
+        @include breakpoint($s768) {
+            height: auto;
+            border: none;
+            display: block;
+            position: relative;
+            width: get-rems(220px);
+        }
+    }
+
+    &__main {
+        padding: .5rem 2rem;
+        width: calc(100% - 220px);
+    }
+
+    &__section {
+        padding-bottom: space(1.8);
+    }
+}
