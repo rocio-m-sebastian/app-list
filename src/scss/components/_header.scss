@@ -10,6 +10,11 @@
     }
 
     &__logo {
-        color: $c-secondary200;
+        color: $c-neutro500;
+        text-decoration: none;
+    }
+
+    &__logo-color {
+        color: $c-secondary100;
     }
 }

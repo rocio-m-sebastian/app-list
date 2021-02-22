@@ -9,7 +9,8 @@ const getData = () => {
       return Promise.reject(response);
     })
     .then(({ list }) => {
-      return list;
+      const listJson = list;
+      return listJson;
     })
     .catch((error) => {
       console.log(error);

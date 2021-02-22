@@ -14,10 +14,7 @@ module.exports = {
     "linebreak-style": 0,
     "import/prefer-default-export": "off",
     "import/no-cycle": "off",
-    "prefer-destructuring": ["error", {
-      "array": "off",
-      "object": "off"
-    }],
+    "prefer-destructuring": ["error", {"object": true, "array": false}],
     "no-param-reassign": "off",
     "arrow-body-style": "off",
     "space-before-function-paren": ["error", {
