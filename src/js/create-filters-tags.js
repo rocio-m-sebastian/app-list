@@ -1,10 +1,11 @@
 const tagsContainerPlace = document.querySelector('.applied-filters-list--citie');
 const tagsContainerSubject = document.querySelector('.applied-filters-list--subject');
 const tagsContainerCenter = document.querySelector('.applied-filters-list--center');
+const tagsContaineNumber = document.querySelector('.applied-filters-list--number');
 
 const createHtmlTag = (tag, selectType) => {
   const tagContent = `
-    <div class="applied-filter applied-filter--x u-flex">
+    <div class="applied-filter applied-filter--x u-flex ${tag.type}">
       <div class="applied-filter--icon u-flex u-flex--center">
             <span class="wrapper-svg u-icon u-flex--inline u-close" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}></span>
         </div>
@@ -21,8 +22,10 @@ const createHtmlTag = (tag, selectType) => {
     tagsContainerPlace.appendChild(tagHtml.firstElementChild);
   } else if (selectType === 'subject') {
     tagsContainerSubject.appendChild(tagHtml.firstElementChild);
-  } else {
+  } else if (selectType === 'center') {
     tagsContainerCenter.appendChild(tagHtml.firstElementChild);
+  } else {
+    tagsContaineNumber.appendChild(tagHtml.firstElementChild);
   }
 
   return tagHtml.firstElementChild;

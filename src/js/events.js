@@ -3,6 +3,7 @@ import { createHtmlTag } from './create-filters-tags';
 import { tagsList, placesList } from '../index';
 import { printTableRow, cleanTable } from './print-table';
 
+const inputNumber = document.querySelector('#js-puesto');
 const selectPlace = document.querySelector('#selectPlace');
 const selectSubject = document.querySelector('#selectSubject');
 const selectCenter = document.querySelector('#selectCenter');
@@ -12,6 +13,18 @@ const tableBody = document.getElementById('js-table-body');
 
 export const events = () => {
   // Events tags
+  inputNumber.addEventListener('change', () => {
+    const newTag = new Tag(inputNumber.value, 'number');
+    tagsList.addTag(newTag);
+    createHtmlTag(newTag, 'number');
+    // filter by tags
+    placesList.resetInitialPlaces();
+    const initialPlaces = placesList;
+    initialPlaces.filter(tagsList);
+    cleanTable();
+    initialPlaces.places.forEach(printTableRow);
+  });
+
   selectPlace.addEventListener('change', () => {
     const newTag = new Tag(selectPlace.value, 'place');
     tagsList.addTag(newTag);

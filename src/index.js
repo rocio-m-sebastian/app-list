@@ -9,6 +9,8 @@ import { events } from './js/events';
 
 const indexView = require('./index.twig');
 
+const inputNumber = document.querySelector('#js-puesto');
+
 console.log(indexView({ variable1: 'value' }));
 
 saveListLocalStorage();
@@ -24,4 +26,9 @@ events();
 
 export const placesList = new PlacesList();
 
+tagsList.tags.forEach((e) => {
+  if (e.type === 'number') {
+    inputNumber.setAttribute('disabled', true);
+  }
+});
 // init();
