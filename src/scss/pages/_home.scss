@@ -1,8 +1,19 @@
 .home {
+    background-color: $c-neutro100;
     position: relative;
 
     @include breakpoint-max($s768) {
         > .u-wrapper { padding: 0; }
+    }
+
+    &__billboard {
+        background-color: $c-secondary200;
+        position: relative;
+    }
+
+    &__billboard-image {
+        position: absolute;
+        width: get-rems(200px);
     }
 
     &__content {

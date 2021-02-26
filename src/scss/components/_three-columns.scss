@@ -1,0 +1,10 @@
+.three-columns {
+    &__component {
+        padding: space();
+        width: 33%;
+    }
+
+    svg {
+        width: get-rems(60px);
+    }
+}

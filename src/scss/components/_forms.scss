@@ -131,9 +131,10 @@
 // :-ms-input-placeholder {
 //     color: $placeholder;
 // }
+input,
 select {
-    left: 0;
-    position: absolute;
-    opacity: 0;
+    border: 1px solid $c-neutro300;
+    border-radius: get-rems(5px);
+    padding: get-rems(10px);
     width: 100%;
 }

@@ -1,6 +1,6 @@
 .table-wiew {
     &__wrapper{
-        border: 2px solid $c-neutro300;
+        border: 1px solid $c-neutro300;
         border-radius: get-rems(5px);
         overflow-x: scroll;
     }

@@ -15,9 +15,9 @@ const createSelectOptions = (array, select) => {
   });
 };
 
-const createSelectFirstOption = (select) => {
+const createSelectFirstOption = (select, label) => {
   const optionElement = document.createElement('option');
-  optionElement.innerHTML = 'Selecciona una opción';
+  optionElement.innerHTML = label;
   optionElement.setAttribute('disabled', true);
   optionElement.setAttribute('selected', true);
   select.prepend(optionElement);
@@ -38,7 +38,7 @@ const getCities = () => {
 
 const createSelectOptionsCities = () => {
   createSelectOptions(getCities(), selectPlace);
-  createSelectFirstOption(selectPlace);
+  createSelectFirstOption(selectPlace, 'Provincia');
 };
 
 // select SUBJECTS
@@ -56,7 +56,7 @@ const getSubjects = () => {
 
 const createSelectOptionsSubjects = () => {
   createSelectOptions(getSubjects(), selectSubject);
-  createSelectFirstOption(selectSubject);
+  createSelectFirstOption(selectSubject, 'Especialidad');
 };
 
 // select CENTERS
@@ -74,7 +74,7 @@ const getCenters = () => {
 
 const createSelectOptionsCenters = () => {
   createSelectOptions(getCenters(), selectCenter);
-  createSelectFirstOption(selectCenter);
+  createSelectFirstOption(selectCenter, 'Centro');
 };
 
 export {

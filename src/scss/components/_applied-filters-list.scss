@@ -1,1 +1,7 @@
-.applied-filters-list { flex: 1; }
+.applied-filters-list { 
+    flex: 1; 
+
+    &__tags {
+        margin-top: space(.5);
+    }
+}

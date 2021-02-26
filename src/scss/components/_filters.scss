@@ -1,9 +1,18 @@
 .filters {
     margin-top: space(.5);
 
+    @include breakpoint($s768) {
+        margin-top: 0;
+    }
+
     &__title {
         margin: 0 .5rem 1rem .5rem;
         padding: .25rem .5rem;
+
+        @include breakpoint($s768) {
+            margin-top: 0;
+            padding-top: 0;
+        }
     }
 
     &__close {
@@ -20,7 +29,6 @@
     }
 
     &__item {
-        display: block;
         margin: 0 .5rem;
         padding: .25rem .5rem;
         position: relative;
@@ -30,32 +38,12 @@
             margin-right: space(.25);
             opacity: .7;
 
-            @include square(18px);
+            @include square(28px);
         }
 
         @include breakpoint($s768) {
             padding: .25rem .25rem .5rem 0;
         }
-    }
-
-    &__item--filter1 {
-        svg { fill: $c-filter1; }
-    }
-
-    &__item--place {
-        svg { fill: $c-filter2; }
-    }
-
-    &__item--filter3 {
-        svg { fill: $c-filter3; }
-    }
-
-    &__item--filter4 {
-        svg { fill: $c-filter4; }
-    }
-
-    &__item--filter5 {
-        svg { fill: $c-filter5; }
     }
 
     &__arrow {

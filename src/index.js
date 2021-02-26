@@ -11,6 +11,12 @@ const indexView = require('./index.twig');
 
 const inputNumber = document.querySelector('#js-puesto');
 
+const htmlClearAll = document.querySelector('#js-clearall');
+
+// const htmlDownloadBtn = document.querySelector('#js-download');
+
+// const elementToConvert = document.querySelector('.three-columns');
+
 console.log(indexView({ variable1: 'value' }));
 
 saveListLocalStorage();
@@ -21,6 +27,9 @@ createSelectOptionsCenters();
 // addTagPlace();
 export const tagsList = new TagsList();
 tagsList.tags.forEach(createHtmlTag);
+if (tagsList.tags.length >= 1 && htmlClearAll.classList.contains('u-hide')) {
+  htmlClearAll.classList.remove('u-hide');
+}
 // console.log(tagsList);
 events();
 
@@ -32,3 +41,5 @@ tagsList.tags.forEach((e) => {
   }
 });
 // init();
+
+// document.addEventListener('DOMContentLoaded', () => {});

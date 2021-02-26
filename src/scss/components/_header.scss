@@ -1,20 +1,19 @@
 .header {
-    left: 0;
-    padding: space() 0;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-
     @include breakpoint($s768) {
         padding: space(1.2) 0;
     }
 
-    &__logo {
-        color: $c-neutro500;
+    &__link {
+        color: $c-white;
         text-decoration: none;
+        z-index: 2;
     }
 
-    &__logo-color {
+    &__link:not(:last-child) {
+        margin-right: space(2) !important;
+    }
+
+    &__link-color {
         color: $c-secondary100;
     }
 }

@@ -21,7 +21,7 @@
 // }
 
 %title1 {
-    @include fluid-type(36px, 36px);
+    @include fluid-type(48px, 48px);
 
     font-weight: 700;
     line-height: space(2.5);
@@ -33,19 +33,19 @@
 }
 
 %title2 {
-    @include fluid-type(30px, 30px);
+    @include fluid-type(26px, 26px);
 
-    font-weight: 400;
-    line-height: space(2);
+    font-weight: 700;
+    line-height: space(1.8);
     margin-bottom: space();
     margin-top: 0;
 }
 
 %title3 {
-    @include fluid-type(24px, 24px);
+    @include fluid-type(22px, 22px);
 
     font-weight: 400;
-    line-height: space(1.8);
+    line-height: space(1.4);
     margin-bottom: space();
 }
 
@@ -74,7 +74,7 @@
 }
 
 %textBig {
-    @include fluid-type(18px, 18px);
+    @include fluid-type(20px, 20px);
 
     // letter-spacing: .3px;
     line-height: space(1.5);

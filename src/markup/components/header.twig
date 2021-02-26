@@ -1,12 +1,11 @@
 <header id="header" class="header {% block headerClasses %}{% endblock %}">
-    <div class="u-wrapper u-flex u-flex--align-center u-flex--justify-between">
-        <a itemscope itemtype="http://schema.org/Brand" itemprop="url"
-            class="header__logo u-flex"
-            href=""
-            aria-label=""
-        >
-            <p class="t-title2"><b>lista<span class="header__logo-color">mir</span>.es</b></p>
-            {# {% include 'svg/logo.svg' %} #}
+    <div class="u-wrapper u-flex u-flex--justify-between">
+        <a class="header__link u-nomargin t-title2" href="">
+            <b>lista<span class="header__link-color">mir</span>.es</b></p>
         </a>
+        <div>
+            <a class="header__link u-nomargin" href="">Cómo funciona</a>
+            <a class="header__link u-nomargin" href="">About</a>
+        </div>
     </div>
 </header>

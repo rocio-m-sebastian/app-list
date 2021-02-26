@@ -4,53 +4,27 @@
         {% include '../svg/icon-close.twig' %}
     </span>
     <ul class="filters__list">
-        <li class="filters__item filters__item--filter1">
+        <li class="filters__item filters__item--filter1 u-flex">
             <span class="wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
                 {% include '../svg/icon-podium.twig' %}
             </span>
-            Puesto
-            <input type="number" id="js-puesto" name="puesto"  min="1" max="12700">
+            <input value="2500" type="number" id="js-puesto" name="puesto"  min="1" max="12700">
         </li>
-        <li class="filters__item filters__item--place">
-            <label for="selectPlace">
+        <li class="filters__item filters__item--place u-flex">
             <span class="wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
                 {% include '../svg/icon-location.twig' %}
             </span>
-            Ciudad 
-            <span class="filters__arrow wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
-                {% include '../svg/icon-arrow-down.twig' %}
-            </span>
-            </label>
-            <select name="" id="selectPlace"></select>
+            <select name="" id="selectPlace">Ciudad</select>
         </li>
-        <li class="filters__item filters__item--filter3">
-            <label for="selectSubject">
+        <li class="filters__item filters__item--filter3 u-flex">
             <span class="wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
                 {% include '../svg/icon-doctor.twig' %}
             </span>
-            Especialidad 
-            <span class="filters__arrow wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
-                {% include '../svg/icon-arrow-down.twig' %}
-            </span>
-            </label>
             <select name="" id="selectSubject"></select>
         </li>
-        <li class="filters__item filters__item--filter4">
-            <span class="wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
-                {% include '../svg/icon-medal.twig' %}
-            </span>
-            Nivel centro 
-            <span class="filters__arrow wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
-                {% include '../svg/icon-arrow-down.twig' %}
-            </span>
-        </li>
-        <li class="filters__item filters__item--filter5">
+        <li class="filters__item filters__item--filter5 u-flex">
             <span class="wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
                 {% include '../svg/icon-hospital.twig' %}
-            </span>
-            Centro 
-            <span class="filters__arrow wrapper-svg u-icon u-flex--inline" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
-                {% include '../svg/icon-arrow-down.twig' %}
             </span>
             <select name="" id="selectCenter"></select>
         </li>

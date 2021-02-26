@@ -1,18 +1,13 @@
-<div class="applied-filters-list u-flex" id="js-applied-filters-list">
-    <div class="applied-filters-list--number">
-        
+<div class="applied-filters-list" id="js-applied-filters-list">
+    <div>
+        <button class="cta">Ocultar filtros</button>
+        <button class="cta cta--secondary" id="js-download">Decargar pdf</button>
     </div>
-    <div class="applied-filters-list--citie">
-        {% include '../components/applied-filter.twig' %}
+    <div class="applied-filters-list__tags u-flex">
+        <div class="applied-filters-list__number"></div>
+        <div class="applied-filters-list__citie"></div>
+        <div class="applied-filters-list__subject"></div>
+        <div class="applied-filters-list__center"></div>
+        <button class="clear cta cta--hollow u-hide" id="js-clearall">Eliminar filtros</button>
     </div>
-    <div class="applied-filters-list--subject">
-        {% include '../components/applied-filter.twig' %}
-    </div>
-    <div class="applied-filters-list--center">
-        {% include '../components/applied-filter.twig' %}
-    </div>
-    {% include '../components/applied-filter.twig' with { 
-    'text':'Clear',
-    'class': 'clear'
-    } %}
 </div>

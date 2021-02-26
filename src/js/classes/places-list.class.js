@@ -19,7 +19,7 @@ export class PlacesList {
   deletePlace(numero) {
     const numeroNum = parseInt(numero, 10);
     this.places = this.places.filter((place) => parseInt(place.numero, 10) !== numeroNum);
-    this.saveSessionStorage();
+    // this.saveSessionStorage();
   }
 
   resetInitialPlaces() {

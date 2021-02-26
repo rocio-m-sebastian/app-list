@@ -2,10 +2,11 @@
     @extend %button;
     @extend %textSmall;
 
-    background-color: $c-secondary100;
-    border: 1px solid $c-secondary100;
-    border-radius: get-rems(25px);
+    background-color: $c-secondary200;
+    border: 2px solid $c-secondary200;
+    border-radius: get-rems(5px);
     color: $c-white;
+    font-size: 12px;
     font-weight: 700;
     padding: get-rems(6px) get-rems(24px);
 
@@ -19,9 +20,9 @@
     }
 
     &:hover {
-        background-color: $c-secondary200;
-        border-color: $c-secondary200;
-        color: $c-white;
+        background-color: transparent;
+        border: 2px solid $c-secondary200;
+        color: $c-secondary200;
     }
 
     &:focus {
@@ -37,15 +38,46 @@
         pointer-events: none;
     }
 
-    &--hollow {
-        background-color: transparent;
-        border-color: $c-secondary100;
-        color: $c-secondary100;
+    &--secondary {
+        background-color: $c-secondary100;
+        border: 2px solid $c-secondary100;
 
         &:hover{
             background-color: transparent;
+            border: 2px solid $c-secondary100;
+            color: $c-secondary100;
+        }
+
+        &:focus {
+            background-color: transparent;
             border-color: $c-secondary200;
             color: $c-secondary200;
+        }
+
+        &:active {
+            background-color: transparent;
+            border-color: $c-secondary100;
+            color: $c-secondary200;
+        }
+
+        &[disabled],
+        &:disabled {
+            background-color: $c-neutro200;
+            border-color: $c-neutro200;
+            color: $c-neutro600;
+            pointer-events: none;
+        }
+    }
+
+    &--hollow {
+        background-color: transparent;
+        border: 2px solid $c-secondary200;
+        color: $c-secondary200;
+
+        &:hover{
+            background-color: $c-secondary200;
+            border: 2px solid $c-secondary200;
+            color: $c-white;
         }
 
         &:focus {

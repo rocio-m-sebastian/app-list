@@ -1,12 +1,4 @@
 .billboard {
-    background-position: 90%;
-    background-position-y: bottom;
-    background-repeat: no-repeat;
-    background-size: contain;
-    margin-top: space();
-    overflow: hidden;
-    position: relative;
-
     // .touch & { height: 90vh; }
 
     &__buttons {
@@ -17,16 +9,22 @@
     }
 
     &__content {
-        min-height: get-rems(470px);
+        margin-bottom: get-rems(50px);
+        min-height: get-rems(400px);
+        z-index: 2;
+
         @include breakpoint($s768) {
             min-height: get-rems(250px);
         }
     }
 
     &__text {
-        max-width: 100%;
+        color: $c-white;
+        width: 100%;
+        z-index: 2;
+        
         @include breakpoint($s768) {
-            max-width: 50%;
+            width: 60%;
         }
     }
 
