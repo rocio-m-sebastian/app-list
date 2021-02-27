@@ -22,5 +22,5 @@ module.exports = {
         "named": "never",
         "asyncArrow": "never"
     }],
-  }
+  },
 };
