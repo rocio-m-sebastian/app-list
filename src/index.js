@@ -41,5 +41,4 @@ tagsList.tags.forEach((e) => {
   }
 });
 // init();
-
 // document.addEventListener('DOMContentLoaded', () => {});
