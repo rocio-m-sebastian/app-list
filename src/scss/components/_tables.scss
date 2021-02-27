@@ -10,6 +10,16 @@ table {
     color: $c-neutro700;
     max-width: 100%;
     width: 100%;
+
+    .u-close {
+        cursor: pointer;
+        
+        svg {
+            margin-left: space(.4);
+            pointer-events: none;
+            width: get-rems(15px);
+        }
+    }
 }
 
 // Extra border underneath header
