@@ -36,19 +36,19 @@ const createHtmlTag = (tag, selectType) => {
 
   const svgWrapperHtml = document.createElement('span');
 
-  if (selectType === 'place') {
+  if (selectType === 'place' || tag.type === 'place') {
     tagsContainer.insertBefore(tagHtml.firstElementChild, htmlClearTags);
     svgWrapperHtml.innerHTML = svgIconPlace;
     document.getElementById(`${tag.id}`).firstElementChild.appendChild(svgWrapperHtml);
-  } else if (selectType === 'subject') {
+  } else if (selectType === 'subject' || tag.type === 'subject') {
     tagsContainer.insertBefore(tagHtml.firstElementChild, htmlClearTags);
     svgWrapperHtml.innerHTML = svgIconSubject;
     document.getElementById(`${tag.id}`).firstElementChild.appendChild(svgWrapperHtml);
-  } else if (selectType === 'center') {
+  } else if (selectType === 'center' || tag.type === 'center') {
     tagsContainer.insertBefore(tagHtml.firstElementChild, htmlClearTags);
     svgWrapperHtml.innerHTML = svgIconCenter;
     document.getElementById(`${tag.id}`).firstElementChild.appendChild(svgWrapperHtml);
-  } else {
+  } else if (selectType === 'number' || tag.type === 'number') {
     tagsContainer.insertBefore(tagHtml.firstElementChild, htmlClearTags);
     svgWrapperHtml.innerHTML = svgIconNumber;
     document.getElementById(`${tag.id}`).firstElementChild.appendChild(svgWrapperHtml);

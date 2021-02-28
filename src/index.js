@@ -13,32 +13,29 @@ const inputNumber = document.querySelector('#js-puesto');
 
 const htmlClearAll = document.querySelector('#js-clearall');
 
-// const htmlDownloadBtn = document.querySelector('#js-download');
+export const placesList = new PlacesList();
 
-// const elementToConvert = document.querySelector('.three-columns');
+export const tagsList = new TagsList();
 
 console.log(indexView({ variable1: 'value' }));
 
 saveListLocalStorage();
 // init();
-createSelectOptionsCities();
-createSelectOptionsSubjects();
-createSelectOptionsCenters();
-// addTagPlace();
-export const tagsList = new TagsList();
-tagsList.tags.forEach(createHtmlTag);
-if (tagsList.tags.length >= 1 && htmlClearAll.classList.contains('u-hide')) {
-  htmlClearAll.classList.remove('u-hide');
-}
-// console.log(tagsList);
-events();
+document.addEventListener('DOMContentLoaded', () => {
+  createSelectOptionsCities();
+  createSelectOptionsSubjects();
+  createSelectOptionsCenters();
+  tagsList.tags.forEach(createHtmlTag);
 
-export const placesList = new PlacesList();
-
-tagsList.tags.forEach((e) => {
-  if (e.type === 'number') {
-    inputNumber.setAttribute('disabled', true);
+  if (tagsList.tags.length >= 1 && htmlClearAll.classList.contains('u-hide')) {
+    htmlClearAll.classList.remove('u-hide');
   }
+
+  events();
+
+  tagsList.tags.forEach((e) => {
+    if (e.type === 'number') {
+      inputNumber.setAttribute('disabled', true);
+    }
+  });
 });
-// init();
-// document.addEventListener('DOMContentLoaded', () => {});
