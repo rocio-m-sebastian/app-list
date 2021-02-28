@@ -35,32 +35,26 @@ export class PlacesList {
   }
 
   filter(tagsList) {
-    console.log('thisplaces', this.places);
-    console.log(tagsList);
     const tagsVals = [];
     tagsList.tags.forEach((tag) => {
-      tagsVals.push(tag.val);
+      if (!tagsVals.includes(tag.val)) {
+        tagsVals.push(tag.val);
+      }
     });
     let position = '';
     tagsList.tags.forEach((e) => {
       if (e.type === 'number') {
         position = e.val;
         inputNumber.setAttribute('disabled', true);
-        console.log('disabled-true');
       } else {
-        console.log('disabled');
         inputNumber.removeAttribute('disabled');
       }
     });
     if (!tagsList.tags.length) {
       inputNumber.removeAttribute('disabled');
     }
-    console.log('position', position);
-    console.log('filters', tagsVals);
     if (tagsVals.length === 1) {
-      console.log('=');
       if (tagsList.tags.some((e) => e.type === 'number')) {
-        console.log(position);
         this.places = this.places.filter(
           (place) => parseInt(place.numero, 10) >= parseInt(position, 10),
         );
@@ -72,7 +66,6 @@ export class PlacesList {
         );
       }
     } else if (tagsVals.length > 1) {
-      console.log('>1');
       if (tagsList.tags.some((e) => e.type === 'place')
          && tagsList.tags.some((e) => e.type === 'subject')
          && tagsList.tags.some((e) => e.type === 'center')

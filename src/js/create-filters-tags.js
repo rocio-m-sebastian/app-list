@@ -1,12 +1,10 @@
-const tagsContainerPlace = document.querySelector('.applied-filters-list__citie');
-const tagsContainerSubject = document.querySelector('.applied-filters-list__subject');
-const tagsContainerCenter = document.querySelector('.applied-filters-list__center');
-const tagsContaineNumber = document.querySelector('.applied-filters-list__number');
+const tagsContainer = document.querySelector('.applied-filters-list__tags');
+const htmlClearTags = document.querySelector('#js-clearall');
 
 const createHtmlTag = (tag, selectType) => {
   const tagContent = `
-    <div class="applied-filter u-flex ${tag.type}">
-      <div class="applied-filter__icon js-icon">
+    <div class="applied-filter u-flex ${tag.type}" id="${tag.id}">
+      <div class="applied-filter__icon">
 
       </div>
       <div class="u-flex">
@@ -39,21 +37,21 @@ const createHtmlTag = (tag, selectType) => {
   const svgWrapperHtml = document.createElement('span');
 
   if (selectType === 'place') {
-    tagsContainerPlace.appendChild(tagHtml.firstElementChild);
+    tagsContainer.insertBefore(tagHtml.firstElementChild, htmlClearTags);
     svgWrapperHtml.innerHTML = svgIconPlace;
-    tagsContainerPlace.querySelector('.js-icon').appendChild(svgWrapperHtml);
+    document.getElementById(`${tag.id}`).firstElementChild.appendChild(svgWrapperHtml);
   } else if (selectType === 'subject') {
-    tagsContainerSubject.appendChild(tagHtml.firstElementChild);
+    tagsContainer.insertBefore(tagHtml.firstElementChild, htmlClearTags);
     svgWrapperHtml.innerHTML = svgIconSubject;
-    tagsContainerSubject.querySelector('.js-icon').appendChild(svgWrapperHtml);
+    document.getElementById(`${tag.id}`).firstElementChild.appendChild(svgWrapperHtml);
   } else if (selectType === 'center') {
-    tagsContainerCenter.appendChild(tagHtml.firstElementChild);
+    tagsContainer.insertBefore(tagHtml.firstElementChild, htmlClearTags);
     svgWrapperHtml.innerHTML = svgIconCenter;
-    tagsContainerCenter.querySelector('.js-icon').appendChild(svgWrapperHtml);
+    document.getElementById(`${tag.id}`).firstElementChild.appendChild(svgWrapperHtml);
   } else {
-    tagsContaineNumber.appendChild(tagHtml.firstElementChild);
+    tagsContainer.insertBefore(tagHtml.firstElementChild, htmlClearTags);
     svgWrapperHtml.innerHTML = svgIconNumber;
-    tagsContaineNumber.querySelector('.js-icon').appendChild(svgWrapperHtml);
+    document.getElementById(`${tag.id}`).firstElementChild.appendChild(svgWrapperHtml);
   }
 
   return tagHtml.firstElementChild;

@@ -10,18 +10,23 @@ const selectCenter = document.querySelector('#selectCenter');
 const htmlTagsList = document.querySelector('#js-applied-filters-list');
 const htmlClearTags = document.querySelector('.clear');
 const tableBody = document.getElementById('js-table-body');
-const htmlTagsPlace = document.querySelector('.applied-filters-list__citie');
-const htmlTagsCenter = document.querySelector('.applied-filters-list__center');
-const htmlTagsNumber = document.querySelector('.applied-filters-list__number');
-const htmlTagsSubject = document.querySelector('.applied-filters-list__subject');
+const tagsContainer = document.querySelector('.applied-filters-list__tags');
 const htmlClearAll = document.querySelector('#js-clearall');
 
 export const events = () => {
   // Events tags
   inputNumber.addEventListener('change', () => {
-    const newTag = new Tag(inputNumber.value, 'number');
-    tagsList.addTag(newTag);
-    createHtmlTag(newTag, 'number');
+    if (tagsList.tags.length) {
+      if (!tagsList.tags.filter((element) => element.val === inputNumber.value).length > 0) {
+        const newTag = new Tag(inputNumber.value, 'number');
+        tagsList.addTag(newTag);
+        createHtmlTag(newTag, 'number');
+      }
+    } else {
+      const newTag = new Tag(inputNumber.value, 'number');
+      tagsList.addTag(newTag);
+      createHtmlTag(newTag, 'number');
+    }
     // filter by tags
     placesList.resetInitialPlaces();
     const initialPlaces = placesList;
@@ -34,9 +39,17 @@ export const events = () => {
   });
 
   selectPlace.addEventListener('change', () => {
-    const newTag = new Tag(selectPlace.value, 'place');
-    tagsList.addTag(newTag);
-    createHtmlTag(newTag, 'place');
+    if (tagsList.tags.length) {
+      if (!tagsList.tags.filter((element) => element.val === selectPlace.value).length > 0) {
+        const newTag = new Tag(selectPlace.value, 'place');
+        tagsList.addTag(newTag);
+        createHtmlTag(newTag, 'place');
+      }
+    } else {
+      const newTag = new Tag(selectPlace.value, 'place');
+      tagsList.addTag(newTag);
+      createHtmlTag(newTag, 'place');
+    }
     // filter by tags
     placesList.resetInitialPlaces();
     const initialPlaces = placesList;
@@ -49,10 +62,17 @@ export const events = () => {
   });
 
   selectSubject.addEventListener('change', () => {
-    const newTag = new Tag(selectSubject.value, 'subject');
-    tagsList.addTag(newTag);
-    createHtmlTag(newTag, 'subject');
-    console.log(tagsList);
+    if (tagsList.tags.length) {
+      if (!tagsList.tags.filter((element) => element.val === selectSubject.value).length > 0) {
+        const newTag = new Tag(selectSubject.value, 'subject');
+        tagsList.addTag(newTag);
+        createHtmlTag(newTag, 'subject');
+      }
+    } else {
+      const newTag = new Tag(selectSubject.value, 'subject');
+      tagsList.addTag(newTag);
+      createHtmlTag(newTag, 'subject');
+    }
     // filter by tags
     placesList.resetInitialPlaces();
     const initialPlaces = placesList;
@@ -65,9 +85,17 @@ export const events = () => {
   });
 
   selectCenter.addEventListener('change', () => {
-    const newTag = new Tag(selectCenter.value, 'center');
-    tagsList.addTag(newTag);
-    createHtmlTag(newTag, 'center');
+    if (tagsList.tags.length) {
+      if (!tagsList.tags.filter((element) => element.val === selectCenter.value).length > 0) {
+        const newTag = new Tag(selectCenter.value, 'center');
+        tagsList.addTag(newTag);
+        createHtmlTag(newTag, 'center');
+      }
+    } else {
+      const newTag = new Tag(selectCenter.value, 'center');
+      tagsList.addTag(newTag);
+      createHtmlTag(newTag, 'center');
+    }
     // filter by tags
     placesList.resetInitialPlaces();
     const initialPlaces = placesList;
@@ -98,12 +126,13 @@ export const events = () => {
 
   htmlClearTags.addEventListener('click', () => {
     tagsList.deleteAllTags();
-    htmlTagsPlace.innerHTML = '';
-    htmlTagsCenter.innerHTML = '';
-    htmlTagsSubject.innerHTML = '';
-    htmlTagsNumber.innerHTML = '';
-    placesList.resetInitialPlaces();
+    const elements = tagsContainer.getElementsByClassName('applied-filter');
+    while (elements.length > 0) {
+      elements[0].parentNode.removeChild(elements[0]);
+    }
+    console.log(tagsContainer.children);
     htmlClearAll.classList.add('u-hide');
+    placesList.resetInitialPlaces();
   });
 
   // Events places list
