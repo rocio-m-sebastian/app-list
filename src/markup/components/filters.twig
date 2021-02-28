@@ -1,6 +1,6 @@
 <div class="filters">
     <h4 class="filters__title u-show u-hide--s768">Filtros</h4>
-    <span class="wrapper-svg u-icon u-flex--inline filters__close u-show u-hide--s768" {% if aria_title is empty %}aria-hidden="true"{% else %}aria-label="{{ aria_title }}"{% endif %}>
+    <span class="wrapper-svg u-icon u-flex--inline filters__close u-show u-hide--s768" id="js-closeFilters">
         {% include '../svg/icon-close.twig' %}
     </span>
     <ul class="filters__list">

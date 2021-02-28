@@ -1,7 +1,11 @@
 .three-columns {
     &__component {
         padding: space();
-        width: 33%;
+        width: 100%;
+
+        @include breakpoint($s768) {
+            width: 33%;
+        }
     }
 
     svg {

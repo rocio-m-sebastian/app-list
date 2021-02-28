@@ -12,6 +12,9 @@ const htmlClearTags = document.querySelector('.clear');
 const tableBody = document.getElementById('js-table-body');
 const tagsContainer = document.querySelector('.applied-filters-list__tags');
 const htmlClearAll = document.querySelector('#js-clearall');
+const htmlFiltersAside = document.querySelector('#js-aside');
+const htmlFiltersBtn = document.querySelector('#js-hide-aside');
+const htmlFiltersClose = document.querySelector('#js-closeFilters');
 
 export const events = () => {
   // Events tags
@@ -111,7 +114,6 @@ export const events = () => {
     if (event.target.id === 'js-delete-tag') {
       tagsList.deleteTag(event.target.getAttribute('data-id'));
       event.target.parentNode.parentNode.remove();
-      console.log(event.target.id);
     }
     // filter by tags
     placesList.resetInitialPlaces();
@@ -141,5 +143,20 @@ export const events = () => {
       placesList.deletePlace(event.target.getAttribute('data-id'));
       event.target.parentNode.remove();
     }
+  });
+
+  // Events ui
+  htmlFiltersBtn.addEventListener('click', () => {
+    if (htmlFiltersAside.classList.contains('u-hide')) {
+      console.log('ver');
+      htmlFiltersBtn.innerText = 'Ver filtros';
+    } else {
+      htmlFiltersBtn.innerText = 'Ocultar filtros';
+    }
+    htmlFiltersAside.classList.toggle('u-hide');
+  });
+
+  htmlFiltersClose.addEventListener('click', () => {
+    htmlFiltersAside.classList.toggle('u-hide');
   });
 };
