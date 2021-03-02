@@ -6,6 +6,7 @@ import { createSelectOptionsCities, createSelectOptionsSubjects, createSelectOpt
 import { TagsList, PlacesList } from './js/classes';
 import { createHtmlTag } from './js/create-filters-tags';
 import { events } from './js/events';
+import scrollTo from './js/scrollTo';
 
 const indexView = require('./index.twig');
 
@@ -16,6 +17,8 @@ const htmlClearAll = document.querySelector('#js-clearall');
 export const placesList = new PlacesList();
 
 export const tagsList = new TagsList();
+
+const htmlBtnGolist = document.querySelector('#js-golist');
 
 console.log(indexView({ variable1: 'value' }));
 
@@ -38,4 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
       inputNumber.setAttribute('disabled', true);
     }
   });
+});
+
+htmlBtnGolist.addEventListener('click', () => {
+  const htmlList = document.querySelector('.three-columns').offsetTop;
+  scrollTo.anchor(0);
+  scrollTo.animate(htmlList, 5000);
 });
