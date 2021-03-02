@@ -25,7 +25,7 @@
     }
 
     &__aside {
-        height: 70vh;
+        height: 100vh;
         background: $c-white;
         border-bottom: 1px solid $c-border;
         left: 0;
@@ -41,6 +41,18 @@
             display: block;
             position: relative;
             width: get-rems(220px);
+        }
+    }
+
+    &__aside-btn {
+        bottom: 0;
+        left: 0;
+        padding: space();
+        position: absolute;
+        width: 100%;
+
+        .cta {
+            width: 100%;;
         }
     }
 
