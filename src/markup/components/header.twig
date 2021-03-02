@@ -1,11 +1,20 @@
-<header id="header" class="header {% block headerClasses %}{% endblock %}">
+<header class="header">
     <div class="u-wrapper u-flex u-flex--justify-between">
         <a class="header__link u-nomargin t-title2" href="">
             <b>lista<span class="header__link-color">mir</span>.es</b></p>
         </a>
-        <div>
-            <a class="header__link u-nomargin" href="">Cómo funciona</a>
-            <a class="header__link u-nomargin" href="">About</a>
+        <span class="u-icon header__menu-hamburger u-show u-hide--s768" id="js-hamburger">
+            {% include '../svg/icon-hamburger.twig' %}
+        </span>
+        <div class="header__menu u-hide u-show--s768" id="js-menu">
+            <span class="u-icon header__menu-close u-show u-hide--s768" id="js-closeMenu">
+                {% include '../svg/icon-close.twig' %}
+            </span>
+            <a class="header__menu-link" href="">Cómo funciona</a>
+            <a class="header__menu-link" href="">About</a>
+            <span class="u-icon header__menu-close header__menu-close--bottom u-show u-hide--s768" id="js-closeMenu-bottom">
+                {% include '../svg/icon-close.twig' %}
+            </span>
         </div>
     </div>
 </header>

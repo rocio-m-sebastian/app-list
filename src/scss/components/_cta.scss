@@ -19,15 +19,13 @@
         }
     }
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &:active
+     {
         background-color: transparent;
         border: 2px solid $c-secondary200;
         color: $c-secondary200;
-    }
-
-    &:focus {
-        background-color: $c-secondary200;
-        border-color: $c-secondary200;
     }
 
     &[disabled],
@@ -42,22 +40,13 @@
         background-color: $c-secondary100;
         border: 2px solid $c-secondary100;
 
-        &:hover{
+        &:hover,
+        &:focus,
+        &:active
+         {
             background-color: transparent;
             border: 2px solid $c-secondary100;
             color: $c-secondary100;
-        }
-
-        &:focus {
-            background-color: transparent;
-            border-color: $c-secondary200;
-            color: $c-secondary200;
-        }
-
-        &:active {
-            background-color: transparent;
-            border-color: $c-secondary100;
-            color: $c-secondary200;
         }
 
         &[disabled],

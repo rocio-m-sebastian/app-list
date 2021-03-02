@@ -9,9 +9,7 @@
     }
 
     &__content {
-        margin-bottom: get-rems(50px);
         min-height: get-rems(400px);
-        z-index: 2;
 
         @include breakpoint($s768) {
             min-height: get-rems(250px);
@@ -21,7 +19,7 @@
     &__text {
         color: $c-white;
         width: 100%;
-        z-index: 2;
+        z-index: 1;
         
         @include breakpoint($s768) {
             width: 60%;

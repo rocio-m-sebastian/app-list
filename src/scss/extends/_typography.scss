@@ -21,15 +21,15 @@
 // }
 
 %title1 {
-    @include fluid-type(48px, 48px);
+    @include fluid-type(32px, 48px);
 
     font-weight: 700;
-    line-height: space(2.5);
-    margin-bottom: space(1.5);
+    line-height: 1.2;
+    margin-bottom: space(1);
 
-    // @include breakpoint($vr-breakpoint) {
-    //     line-height: space(2.7);
-    // }
+    @include breakpoint($vr-breakpoint) {
+        line-height: space(2.5);
+    }
 }
 
 %title2 {
@@ -74,10 +74,9 @@
 }
 
 %textBig {
-    @include fluid-type(20px, 20px);
+    @include fluid-type(18px, 20px);
 
-    // letter-spacing: .3px;
-    line-height: space(1.5);
+    line-height: 1.5;
 }
 
 // %label {

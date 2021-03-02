@@ -15,6 +15,10 @@ const htmlClearAll = document.querySelector('#js-clearall');
 const htmlFiltersAside = document.querySelector('#js-aside');
 const htmlFiltersBtn = document.querySelector('#js-hide-aside');
 const htmlFiltersClose = document.querySelector('#js-closeFilters');
+const htmlHeader = document.querySelector('#js-menu');
+const htmlMenuClose = document.querySelector('#js-closeMenu');
+const htmlMenuBottomClose = document.querySelector('#js-closeMenu-bottom');
+const htmlMenuHmburger = document.querySelector('#js-hamburger');
 
 export const events = () => {
   // Events tags
@@ -158,5 +162,17 @@ export const events = () => {
 
   htmlFiltersClose.addEventListener('click', () => {
     htmlFiltersAside.classList.toggle('u-hide');
+  });
+
+  htmlMenuClose.addEventListener('click', () => {
+    htmlFiltersAside.classList.toggle('u-hide');
+  });
+
+  htmlMenuBottomClose.addEventListener('click', () => {
+    htmlHeader.classList.toggle('u-hide');
+  });
+
+  htmlMenuHmburger.addEventListener('click', () => {
+    htmlHeader.classList.toggle('u-hide');
   });
 };

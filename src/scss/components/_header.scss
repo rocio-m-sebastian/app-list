@@ -1,4 +1,6 @@
 .header {
+    padding: space(.5) 0;
+
     @include breakpoint($s768) {
         padding: space(1.2) 0;
     }
@@ -6,7 +8,6 @@
     &__link {
         color: $c-white;
         text-decoration: none;
-        z-index: 2;
     }
 
     &__link:not(:last-child) {
@@ -15,5 +16,74 @@
 
     &__link-color {
         color: $c-secondary100;
+    }
+
+    &__menu {
+        height: 100vh;
+        background: $c-white;
+        left: 0;
+        padding-top: space(2.5);
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 2;
+
+        @include breakpoint($s768) {
+            background: transparent;
+            height: auto;
+            display: block;
+            padding: 0;
+            position: relative;
+            text-align: right;
+        }
+    }
+
+    &__menu-link {
+        color: $c-neutro500;
+        display: block;
+        padding: space(.75);
+        text-align: center;
+        text-decoration: none;
+
+        @include breakpoint($s768) {
+            color: $c-white;
+            display: inline-block;
+            padding: 0;
+            text-align: left;
+        }
+    }
+
+    &__menu-link:not(:last-child) {
+        @include breakpoint($s768) {
+            margin-right: space(1.5);
+        }
+    }
+
+    &__menu-hamburger,
+    &__menu-close {
+        display: inline-block;
+        position: absolute;
+        right: space();
+        top: space();
+
+        svg {
+            @include square(20px);
+
+            fill: $c-neutro700;
+        }
+    }
+
+    &__menu-hamburger svg {
+        fill: $c-white;
+    }
+
+    &__menu-close--bottom {
+        border: 1px solid $c-neutro700;
+        border-radius: 50%;
+        bottom: space();
+        height: get-rems(42px);
+        right: calc(50% - 20px);
+        padding: get-rems(10px);
+        top: initial;
     }
 }

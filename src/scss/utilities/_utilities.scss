@@ -21,8 +21,8 @@
 .u-nomargin { margin:0 !important; }
 
 .u-component {
-    padding-top: space();
-    padding-bottom: space();
+    padding-top: space(2);
+    padding-bottom: space(2);
 
     @include breakpoint($s768) {
         padding-top: space(2);
