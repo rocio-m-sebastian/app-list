@@ -2,10 +2,18 @@
     flex: 1; 
 
     &__tags {
+        flex-wrap: nowrap;
         margin-top: space(.5);
+        overflow-x: scroll;
+
+        @include breakpoint($s768) {
+            flex-wrap: wrap;
+            overflow-x: hidden;
+        }
     }
 
     &__clear {
         margin-bottom: space(.5);
+        white-space: nowrap;
     }
 }
