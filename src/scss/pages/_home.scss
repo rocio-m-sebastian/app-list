@@ -64,4 +64,19 @@
     &__section {
         padding-bottom: space(1.8);
     }
+
+    &__top-btn {
+        background-color: $c-secondary200;
+        border-radius: get-rems(5px);
+        border: 2px solid $c-secondary200;
+        bottom: space();
+        cursor: pointer;
+        padding: space(.5);
+        position: fixed;
+        right: space();
+
+        svg {
+            fill: $c-white;
+        }
+    }
 }

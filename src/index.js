@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 htmlBtnGolist.addEventListener('click', () => {
-  const htmlList = document.querySelector('.three-columns').offsetTop;
+  const htmlList = document.querySelector('#js-table').offsetTop;
   scrollTo.anchor(0);
   scrollTo.animate(htmlList, 5000);
 });

@@ -27,6 +27,7 @@ function getElementOffsetTop(value) {
 }
 
 function anchor(element, offset = 0) {
+  console.log(element);
   const target = getElementOffsetTop(element);
   if (!isInt(element)) {
     document.location.hash = element;
