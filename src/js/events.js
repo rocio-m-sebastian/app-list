@@ -7,7 +7,7 @@ import { setSticky } from './sticky';
 import { showBtn } from './showBtn';
 
 const inputNumber = document.querySelector('#js-puesto');
-const selectPlace = document.querySelector('#selectPlace');
+// const selectPlace = document.querySelector('#selectPlace');
 const selectSubject = document.querySelector('#selectSubject');
 const selectCenter = document.querySelector('#selectCenter');
 const htmlTagsList = document.querySelector('#js-applied-filters-list');
@@ -51,27 +51,41 @@ export const events = () => {
     }
   });
 
-  selectPlace.addEventListener('change', () => {
+  htmlFiltersClose.addEventListener('click', () => {
+    htmlFiltersAside.classList.toggle('u-hide');
+
     if (tagsList.tags.length) {
-      if (!tagsList.tags.filter((element) => element.val === selectPlace.value).length > 0) {
-        const newTag = new Tag(selectPlace.value, 'place');
-        tagsList.addTag(newTag);
-        createHtmlTag(newTag, 'place');
+      const checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+      for (let i = 0; i < checkboxes.length; i += 1) {
+        if (!tagsList.tags.filter((element) => element.val === checkboxes[i].value).length > 0) {
+          const newTag = new Tag(checkboxes[i].value, 'place');
+          tagsList.addTag(newTag);
+          createHtmlTag(newTag, 'place');
+        }
+        checkboxes[i].disabled = true;
       }
     } else {
-      const newTag = new Tag(selectPlace.value, 'place');
-      tagsList.addTag(newTag);
-      createHtmlTag(newTag, 'place');
+      const checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+      for (let i = 0; i < checkboxes.length; i += 1) {
+        const newTag = new Tag(checkboxes[i].value, 'place');
+        tagsList.addTag(newTag);
+        createHtmlTag(newTag, 'place');
+        checkboxes[i].disabled = true;
+      }
     }
+
     // filter by tags
     placesList.resetInitialPlaces();
     const initialPlaces = placesList;
     initialPlaces.filter(tagsList);
     cleanTable();
     initialPlaces.places.forEach(printTableRow);
-    if (htmlClearAll.classList.contains('u-hide')) {
+
+    if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
       htmlClearAll.classList.remove('u-hide');
     }
+
+    htmlFiltersBtn.innerText = 'Ver filtros';
   });
 
   selectSubject.addEventListener('change', () => {
@@ -123,7 +137,16 @@ export const events = () => {
   htmlTagsList.addEventListener('click', (event) => {
     if (event.target.id === 'js-delete-tag') {
       tagsList.deleteTag(event.target.getAttribute('data-id'));
+      const name = event.target.getAttribute('data-name');
       event.target.parentNode.parentNode.remove();
+      const inputsList = document.querySelectorAll('input[type="checkbox"]');
+      for (let i = 0; i < inputsList.length; i += 1) {
+        if (inputsList[i].value === name) {
+          inputsList[i].checked = false;
+          inputsList[i].disabled = false;
+        }
+      }
+      document.querySelectorAll('input[type="number"]').checked = false;
     }
     // filter by tags
     placesList.resetInitialPlaces();
@@ -145,6 +168,11 @@ export const events = () => {
     console.log(tagsContainer.children);
     htmlClearAll.classList.add('u-hide');
     placesList.resetInitialPlaces();
+    const inputsList = document.querySelectorAll('input[type="checkbox"]');
+    for (let i = 0; i < inputsList.length; i += 1) {
+      inputsList[i].checked = false;
+      inputsList[i].disabled = false;
+    }
   });
 
   // Events places list
@@ -158,17 +186,16 @@ export const events = () => {
   // Events ui
   htmlFiltersBtn.addEventListener('click', () => {
     if (htmlFiltersAside.classList.contains('u-hide')) {
-      console.log('ver');
-      htmlFiltersBtn.innerText = 'Ver filtros';
-    } else {
       htmlFiltersBtn.innerText = 'Ocultar filtros';
+    } else {
+      htmlFiltersBtn.innerText = 'Ver filtros';
     }
     htmlFiltersAside.classList.toggle('u-hide');
   });
 
-  htmlFiltersClose.addEventListener('click', () => {
+  /* htmlFiltersClose.addEventListener('click', () => {
     htmlFiltersAside.classList.toggle('u-hide');
-  });
+  }); */
 
   htmlMenuClose.addEventListener('click', () => {
     htmlHeader.classList.toggle('u-hide');

@@ -77,13 +77,9 @@
         fill: $c-white;
     }
 
-    &__menu-close--bottom {
-        border: 1px solid $c-neutro700;
-        border-radius: 50%;
-        bottom: space();
+    &__menu-close {
+        top: space();
         height: get-rems(42px);
-        right: calc(50% - 20px);
-        padding: get-rems(10px);
-        top: initial;
+        right: space();
     }
 }

@@ -136,5 +136,9 @@ select {
     border: 1px solid $c-neutro300;
     border-radius: get-rems(5px);
     padding: get-rems(10px);
+}
+
+input[type=number],
+select {
     width: 100%;
 }

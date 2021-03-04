@@ -15,6 +15,17 @@ const createSelectOptions = (array, select) => {
   });
 };
 
+const createCheckboxes = (array, container) => {
+  array.forEach((element) => {
+    const checkElement = `
+    <input type="checkbox" id="${element}" name="${element}" value="${element}">
+    <label for="${element}">${element}</label>`;
+    const wrapperCheckElement = document.createElement('div');
+    wrapperCheckElement.innerHTML = checkElement;
+    container.appendChild(wrapperCheckElement);
+  });
+};
+
 const createSelectFirstOption = (select, label) => {
   const optionElement = document.createElement('option');
   optionElement.innerHTML = label;
@@ -37,8 +48,7 @@ const getCities = () => {
 };
 
 const createSelectOptionsCities = () => {
-  createSelectOptions(getCities(), selectPlace);
-  createSelectFirstOption(selectPlace, 'Provincia');
+  createCheckboxes(getCities(), selectPlace);
 };
 
 // select SUBJECTS

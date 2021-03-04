@@ -24,6 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
   createSelectOptionsSubjects();
   createSelectOptionsCenters();
   tagsList.tags.forEach(createHtmlTag);
+  tagsList.tags.forEach((tag) => {
+    const inputsList = document.querySelectorAll('input[type="checkbox"]');
+    for (let i = 0; i < inputsList.length; i += 1) {
+      if (inputsList[i].value === tag.val) {
+        inputsList[i].checked = true;
+        inputsList[i].disabled = true;
+      }
+    }
+  });
 
   if (tagsList.tags.length >= 1 && htmlClearAll.classList.contains('u-hide')) {
     htmlClearAll.classList.remove('u-hide');

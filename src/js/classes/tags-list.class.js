@@ -12,8 +12,7 @@ export class TagsList {
   }
 
   deleteTag(id) {
-    const idNum = parseInt(id, 10);
-    this.tags = this.tags.filter((tag) => tag.id !== idNum);
+    this.tags = this.tags.filter((tag) => tag.id !== id);
     this.saveSessionStorage();
   }
 
