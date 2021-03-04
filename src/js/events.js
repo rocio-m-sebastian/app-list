@@ -4,6 +4,7 @@ import { tagsList, placesList } from '../index';
 import { printTableRow, cleanTable } from './print-table';
 import { doScrolling } from './scrollTo';
 import { setSticky } from './sticky';
+import { showBtn } from './showBtn';
 
 const inputNumber = document.querySelector('#js-puesto');
 const selectPlace = document.querySelector('#selectPlace');
@@ -180,7 +181,7 @@ export const events = () => {
 
 htmlBtnGolist.addEventListener('click', doScrolling.bind(null, '#js-table', 1000));
 
-htmlBtnTop.addEventListener('click', doScrolling.bind(null, '#js-table', 1000));
+htmlBtnTop.addEventListener('click', doScrolling.bind(null, '#js-tableview', 1000));
 
 htmlLinkList.addEventListener('click', () => {
   doScrolling('#js-table', 1000);
@@ -194,3 +195,5 @@ htmlLinkHow.addEventListener('click', () => {
 });
 
 window.onscroll = () => { setSticky(); };
+
+window.onscroll = () => { showBtn(); };
