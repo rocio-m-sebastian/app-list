@@ -2,6 +2,7 @@ import { Tag } from './classes';
 import { createHtmlTag } from './create-filters-tags';
 import { tagsList, placesList } from '../index';
 import { printTableRow, cleanTable } from './print-table';
+import { doScrolling } from './scrollTo';
 
 const inputNumber = document.querySelector('#js-puesto');
 const selectPlace = document.querySelector('#selectPlace');
@@ -18,6 +19,10 @@ const htmlFiltersClose = document.querySelector('#js-closeFilters');
 const htmlHeader = document.querySelector('#js-menu');
 const htmlMenuClose = document.querySelector('#js-closeMenu');
 const htmlMenuHmburger = document.querySelector('#js-hamburger');
+const htmlBtnGolist = document.querySelector('#js-golist');
+const htmlBtnTop = document.querySelector('#js-btn-top');
+const htmlLinkHow = document.querySelector('#js-link-how');
+const htmlLinkList = document.querySelector('#js-link-list');
 
 export const events = () => {
   // Events tags
@@ -171,3 +176,15 @@ export const events = () => {
     htmlHeader.classList.toggle('u-hide');
   });
 };
+
+htmlBtnGolist.addEventListener('click', doScrolling.bind(null, '#js-table', 1000));
+htmlBtnTop.addEventListener('click', doScrolling.bind(null, '#js-table', 1000));
+htmlLinkList.addEventListener('click', () => {
+  doScrolling('#js-table', 1000);
+  htmlHeader.classList.toggle('u-hide');
+  console.log('list');
+});
+htmlLinkHow.addEventListener('click', () => {
+  htmlHeader.classList.toggle('u-hide');
+  doScrolling('#js-section-how', 1000);
+});

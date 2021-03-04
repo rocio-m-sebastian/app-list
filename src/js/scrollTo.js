@@ -1,61 +1,31 @@
-import safeScrollTop from './safeScrollTop';
-
-// For a best approach to fix the header height
-// https://css-tricks.com/hash-tag-links-padding/
-
-/**
- * t = current time
- * b = start value
- * c = change in value
- * d = speed
- */
-const easeInOutQuad = (t, b, c, d) => {
-  let currentTime = t / (d / 2);
-  if (currentTime < 1) return c / (2 * currentTime * currentTime + b);
-  currentTime -= 1;
-  return -c / (2 * (currentTime * (currentTime - 2) - 1) + b);
-};
-
-const isInt = (n) => Number(n) === n;
-
-function getElementOffsetTop(value) {
-  if (!isInt(value)) {
-    const elem = document.querySelector(value);
-    if (elem) return elem.offsetTop;
-  }
-  return value || 0;
+function getElementY(query) {
+  return window.pageYOffset + document.querySelector(query).getBoundingClientRect().top;
 }
 
-function anchor(element, offset = 0) {
-  console.log(element);
-  const target = getElementOffsetTop(element);
-  if (!isInt(element)) {
-    document.location.hash = element;
-  }
-  window.scrollTo(0, target - offset);
-}
-
-function animate(element, speed = 500, offset = 0) {
-  const start = safeScrollTop();
-  const target = getElementOffsetTop(element);
-  const change = target - start - offset;
-  const increment = 20;
-  let currentTime = 0;
-
-  function animateScroll() {
-    currentTime += increment;
-    const val = easeInOutQuad(currentTime, start, change, speed);
-    window.scroll(0, val);
-    if (currentTime < speed) setTimeout(animateScroll, increment);
-  }
-  animateScroll();
-}
-
-function scrollTo() {
-  return {
-    anchor,
-    animate,
+function doScrolling(element, duration) {
+  const startingY = window.pageYOffset;
+  const elementY = getElementY(element);
+  const targetY = document.body.scrollHeight - elementY < window.innerHeight
+    ? document.body.scrollHeight - window.innerHeight : elementY;
+  const diff = targetY - startingY;
+  const easing = function(t) {
+    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
   };
+  let start;
+  if (!diff) return;
+  window.requestAnimationFrame(function step(timestamp) {
+    if (!start) start = timestamp;
+    const time = timestamp - start;
+    let percent = Math.min(time / duration, 1);
+    percent = easing(percent);
+
+    window.scrollTo(0, startingY + diff * percent);
+    if (time < duration) {
+      window.requestAnimationFrame(step);
+    }
+  });
 }
 
-export default scrollTo();
+export {
+  doScrolling,
+};

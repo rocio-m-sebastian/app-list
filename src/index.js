@@ -1,12 +1,10 @@
 import './styles.scss';
 
-// import { init } from './js/print-table';
 import { saveListLocalStorage } from './js/save-localstorage';
 import { createSelectOptionsCities, createSelectOptionsSubjects, createSelectOptionsCenters } from './js/populate-selects';
 import { TagsList, PlacesList } from './js/classes';
 import { createHtmlTag } from './js/create-filters-tags';
 import { events } from './js/events';
-import scrollTo from './js/scrollTo';
 
 const indexView = require('./index.twig');
 
@@ -18,10 +16,7 @@ export const placesList = new PlacesList();
 
 export const tagsList = new TagsList();
 
-const htmlBtnGolist = document.querySelector('#js-golist');
-
 console.log(indexView({ variable1: 'value' }));
-
 saveListLocalStorage();
 // init();
 document.addEventListener('DOMContentLoaded', () => {
@@ -41,10 +36,4 @@ document.addEventListener('DOMContentLoaded', () => {
       inputNumber.setAttribute('disabled', true);
     }
   });
-});
-
-htmlBtnGolist.addEventListener('click', () => {
-  const htmlList = document.querySelector('#js-table').offsetTop;
-  scrollTo.anchor(0);
-  scrollTo.animate(htmlList, 5000);
 });
