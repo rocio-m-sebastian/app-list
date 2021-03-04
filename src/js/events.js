@@ -25,6 +25,9 @@ const htmlBtnGolist = document.querySelector('#js-golist');
 const htmlBtnTop = document.querySelector('#js-btn-top');
 const htmlLinkHow = document.querySelector('#js-link-how');
 const htmlLinkList = document.querySelector('#js-link-list');
+const htmlShowPlaces = document.querySelector('#js-showPlaces');
+const htmlShowSubjects = document.querySelector('#js-showSubjects');
+const htmlShowCenters = document.querySelector('#js-showCenters');
 
 export const events = () => {
   // Events tags
@@ -245,3 +248,15 @@ window.onscroll = () => {
   setSticky();
   showBtn();
 };
+
+htmlShowPlaces.addEventListener('click', () => {
+  selectPlace.classList.toggle('u-hide');
+});
+
+htmlShowSubjects.addEventListener('click', () => {
+  selectSubject.classList.toggle('u-hide');
+});
+
+htmlShowCenters.addEventListener('click', () => {
+  selectCenter.classList.toggle('u-hide');
+});

@@ -33,6 +33,14 @@
         }
     }
 
+    &__checks {
+        padding-left: get-rems(35px);
+    }
+
+    &__more {
+        font-size: get-rems(20px);
+    }
+
     &__arrow {
         svg {
             fill: $c-neutro700;
