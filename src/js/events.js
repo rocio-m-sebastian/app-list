@@ -3,6 +3,7 @@ import { createHtmlTag } from './create-filters-tags';
 import { tagsList, placesList } from '../index';
 import { printTableRow, cleanTable } from './print-table';
 import { doScrolling } from './scrollTo';
+import { setSticky } from './sticky';
 
 const inputNumber = document.querySelector('#js-puesto');
 const selectPlace = document.querySelector('#selectPlace');
@@ -178,13 +179,18 @@ export const events = () => {
 };
 
 htmlBtnGolist.addEventListener('click', doScrolling.bind(null, '#js-table', 1000));
+
 htmlBtnTop.addEventListener('click', doScrolling.bind(null, '#js-table', 1000));
+
 htmlLinkList.addEventListener('click', () => {
   doScrolling('#js-table', 1000);
   htmlHeader.classList.toggle('u-hide');
   console.log('list');
 });
+
 htmlLinkHow.addEventListener('click', () => {
   htmlHeader.classList.toggle('u-hide');
   doScrolling('#js-section-how', 1000);
 });
+
+window.onscroll = () => { setSticky(); };
