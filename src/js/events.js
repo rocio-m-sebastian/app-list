@@ -194,6 +194,7 @@ htmlLinkHow.addEventListener('click', () => {
   doScrolling('#js-section-how', 1000);
 });
 
-window.onscroll = () => { setSticky(); };
-
-window.onscroll = () => { showBtn(); };
+window.onscroll = () => {
+  setSticky();
+  showBtn();
+};
