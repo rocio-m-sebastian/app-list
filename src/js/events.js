@@ -7,7 +7,7 @@ import { setSticky } from './sticky';
 import { showBtn } from './showBtn';
 
 const inputNumber = document.querySelector('#js-puesto');
-// const selectPlace = document.querySelector('#selectPlace');
+const selectPlace = document.querySelector('#selectPlace');
 const selectSubject = document.querySelector('#selectSubject');
 const selectCenter = document.querySelector('#selectCenter');
 const htmlTagsList = document.querySelector('#js-applied-filters-list');
@@ -51,11 +51,9 @@ export const events = () => {
     }
   });
 
-  htmlFiltersClose.addEventListener('click', () => {
-    htmlFiltersAside.classList.toggle('u-hide');
-
+  const filterPaces = () => {
     if (tagsList.tags.length) {
-      const checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+      const checkboxes = selectPlace.querySelectorAll('input[type=checkbox]:checked');
       for (let i = 0; i < checkboxes.length; i += 1) {
         if (!tagsList.tags.filter((element) => element.val === checkboxes[i].value).length > 0) {
           const newTag = new Tag(checkboxes[i].value, 'place');
@@ -65,7 +63,7 @@ export const events = () => {
         checkboxes[i].disabled = true;
       }
     } else {
-      const checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+      const checkboxes = selectPlace.querySelectorAll('input[type=checkbox]:checked');
       for (let i = 0; i < checkboxes.length; i += 1) {
         const newTag = new Tag(checkboxes[i].value, 'place');
         tagsList.addTag(newTag);
@@ -73,7 +71,6 @@ export const events = () => {
         checkboxes[i].disabled = true;
       }
     }
-
     // filter by tags
     placesList.resetInitialPlaces();
     const initialPlaces = placesList;
@@ -84,21 +81,27 @@ export const events = () => {
     if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
       htmlClearAll.classList.remove('u-hide');
     }
+  };
 
-    htmlFiltersBtn.innerText = 'Ver filtros';
-  });
-
-  selectSubject.addEventListener('change', () => {
+  const filterSubjects = () => {
     if (tagsList.tags.length) {
-      if (!tagsList.tags.filter((element) => element.val === selectSubject.value).length > 0) {
-        const newTag = new Tag(selectSubject.value, 'subject');
+      const checkboxes = selectSubject.querySelectorAll('input[type=checkbox]:checked');
+      for (let i = 0; i < checkboxes.length; i += 1) {
+        if (!tagsList.tags.filter((element) => element.val === checkboxes[i].value).length > 0) {
+          const newTag = new Tag(checkboxes[i].value, 'subject');
+          tagsList.addTag(newTag);
+          createHtmlTag(newTag, 'subject');
+        }
+        checkboxes[i].disabled = true;
+      }
+    } else {
+      const checkboxes = selectSubject.querySelectorAll('input[type=checkbox]:checked');
+      for (let i = 0; i < checkboxes.length; i += 1) {
+        const newTag = new Tag(checkboxes[i].value, 'subject');
         tagsList.addTag(newTag);
         createHtmlTag(newTag, 'subject');
+        checkboxes[i].disabled = true;
       }
-    } else {
-      const newTag = new Tag(selectSubject.value, 'subject');
-      tagsList.addTag(newTag);
-      createHtmlTag(newTag, 'subject');
     }
     // filter by tags
     placesList.resetInitialPlaces();
@@ -109,19 +112,27 @@ export const events = () => {
     if (htmlClearAll.classList.contains('u-hide')) {
       htmlClearAll.classList.remove('u-hide');
     }
-  });
+  };
 
-  selectCenter.addEventListener('change', () => {
+  const filterCenters = () => {
     if (tagsList.tags.length) {
-      if (!tagsList.tags.filter((element) => element.val === selectCenter.value).length > 0) {
-        const newTag = new Tag(selectCenter.value, 'center');
+      const checkboxes = selectCenter.querySelectorAll('input[type=checkbox]:checked');
+      for (let i = 0; i < checkboxes.length; i += 1) {
+        if (!tagsList.tags.filter((element) => element.val === checkboxes[i].value).length > 0) {
+          const newTag = new Tag(checkboxes[i].value, 'center');
+          tagsList.addTag(newTag);
+          createHtmlTag(newTag, 'center');
+        }
+        checkboxes[i].disabled = true;
+      }
+    } else {
+      const checkboxes = selectCenter.querySelectorAll('input[type=checkbox]:checked');
+      for (let i = 0; i < checkboxes.length; i += 1) {
+        const newTag = new Tag(checkboxes[i].value, 'center');
         tagsList.addTag(newTag);
         createHtmlTag(newTag, 'center');
+        checkboxes[i].disabled = true;
       }
-    } else {
-      const newTag = new Tag(selectCenter.value, 'center');
-      tagsList.addTag(newTag);
-      createHtmlTag(newTag, 'center');
     }
     // filter by tags
     placesList.resetInitialPlaces();
@@ -129,9 +140,18 @@ export const events = () => {
     initialPlaces.filter(tagsList);
     cleanTable();
     initialPlaces.places.forEach(printTableRow);
-    if (htmlClearAll.classList.contains('u-hide')) {
+
+    if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
       htmlClearAll.classList.remove('u-hide');
     }
+  };
+
+  htmlFiltersClose.addEventListener('click', () => {
+    htmlFiltersAside.classList.toggle('u-hide');
+    filterPaces();
+    filterCenters();
+    filterSubjects();
+    htmlFiltersBtn.innerText = 'Ver filtros';
   });
 
   htmlTagsList.addEventListener('click', (event) => {

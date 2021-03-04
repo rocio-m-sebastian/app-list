@@ -7,14 +7,6 @@ const removeDuplicates = (array) => {
   return result.sort();
 };
 
-const createSelectOptions = (array, select) => {
-  array.forEach((element) => {
-    const optionElement = document.createElement('option');
-    optionElement.innerHTML = element;
-    select.appendChild(optionElement);
-  });
-};
-
 const createCheckboxes = (array, container) => {
   array.forEach((element) => {
     const checkElement = `
@@ -24,14 +16,6 @@ const createCheckboxes = (array, container) => {
     wrapperCheckElement.innerHTML = checkElement;
     container.appendChild(wrapperCheckElement);
   });
-};
-
-const createSelectFirstOption = (select, label) => {
-  const optionElement = document.createElement('option');
-  optionElement.innerHTML = label;
-  optionElement.setAttribute('disabled', true);
-  optionElement.setAttribute('selected', true);
-  select.prepend(optionElement);
 };
 
 // select CITIES
@@ -65,8 +49,7 @@ const getSubjects = () => {
 };
 
 const createSelectOptionsSubjects = () => {
-  createSelectOptions(getSubjects(), selectSubject);
-  createSelectFirstOption(selectSubject, 'Especialidad');
+  createCheckboxes(getSubjects(), selectSubject);
 };
 
 // select CENTERS
@@ -83,8 +66,7 @@ const getCenters = () => {
 };
 
 const createSelectOptionsCenters = () => {
-  createSelectOptions(getCenters(), selectCenter);
-  createSelectFirstOption(selectCenter, 'Centro');
+  createCheckboxes(getCenters(), selectCenter);
 };
 
 export {

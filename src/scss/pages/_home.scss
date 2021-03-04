@@ -29,7 +29,9 @@
         background: $c-white;
         border-bottom: 1px solid $c-border;
         left: 0;
+        overflow-y: scroll;
         padding: .5rem;
+        padding-bottom: space(3);
         position: fixed;
         top: 0;
         width: 100%;
