@@ -25,9 +25,12 @@ const htmlBtnGolist = document.querySelector('#js-golist');
 const htmlBtnTop = document.querySelector('#js-btn-top');
 const htmlLinkHow = document.querySelector('#js-link-how');
 const htmlLinkList = document.querySelector('#js-link-list');
-const htmlShowPlaces = document.querySelector('#js-showPlaces');
-const htmlShowSubjects = document.querySelector('#js-showSubjects');
-const htmlShowCenters = document.querySelector('#js-showCenters');
+// const htmlShowPlaces = document.querySelector('#js-showPlaces');
+// const htmlShowSubjects = document.querySelector('#js-showSubjects');
+// const htmlShowCenters = document.querySelector('#js-showCenters');
+const htmlFilterPlace = document.querySelector('#js-filter-place');
+const htmlFilterSubject = document.querySelector('#js-filter-subject');
+const htmlFilterCenter = document.querySelector('#js-filter-center');
 
 export const events = () => {
   // Events tags
@@ -249,14 +252,17 @@ window.onscroll = () => {
   showBtn();
 };
 
-htmlShowPlaces.addEventListener('click', () => {
+htmlFilterPlace.addEventListener('click', () => {
   selectPlace.classList.toggle('u-hide');
+  htmlFilterPlace.classList.toggle('u-active');
 });
 
-htmlShowSubjects.addEventListener('click', () => {
+htmlFilterSubject.addEventListener('click', () => {
   selectSubject.classList.toggle('u-hide');
+  htmlFilterSubject.classList.toggle('u-active');
 });
 
-htmlShowCenters.addEventListener('click', () => {
+htmlFilterCenter.addEventListener('click', () => {
   selectCenter.classList.toggle('u-hide');
+  htmlFilterCenter.classList.toggle('u-active');
 });

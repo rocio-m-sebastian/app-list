@@ -11,44 +11,59 @@
             <input value="2500" type="number" id="js-puesto" name="puesto"  min="1" max="12700">
         </li>
         <li class="filters__item">
-            <div class="u-flex u-flex--justify-between">
+            <div class="filters__place u-flex u-flex--justify-between" id="js-filter-place">
                 <div class="u-flex">
                     <span>
                         {% include '../svg/icon-location.twig' %}
                     </span>
                     <span>Provincia</span>
                 </div>
-                <span class="filters__more u-flex--inline" id="js-showPlaces">
-                    +
-                </span>
+                <div>
+                    <span class="filters__more u-flex--inline">
+                        {% include '../svg/icon-plus.twig' %}
+                    </span>
+                    <span class="filters__less u-flex--inline">
+                        {% include '../svg/icon-less.twig' %}
+                    </span>
+                </div>
             </div>
             <div class="filters__checks u-hide" id="selectPlace"></div>
         </li>
         <li class="filters__item">
-            <div class="u-flex u-flex--justify-between">
+            <div class="filters__subject u-flex u-flex--justify-between" id="js-filter-subject">
                 <div class="u-flex">
                     <span class="wrapper-svg u-icon u-flex--inline">
                         {% include '../svg/icon-doctor.twig' %}
                     </span>
                     <span>Especialidad</span>
                 </div>
-                <span class="filters__more u-flex--inline" id="js-showSubjects">
-                    +
-                </span>
+                <div>
+                    <span class="filters__more u-flex--inline">
+                        {% include '../svg/icon-plus.twig' %}
+                    </span>
+                    <span class="filters__less u-flex--inline">
+                        {% include '../svg/icon-less.twig' %}
+                    </span>
+                </div>
             </div>
             <div class="filters__checks u-hide" id="selectSubject"></div>
         </li>
         <li class="filters__item">
-            <div class="u-flex u-flex--justify-between">
+            <div class="filters__center u-flex u-flex--justify-between" id="js-filter-center">
                 <div class="u-flex">
                     <span class="wrapper-svg u-icon u-flex--inline">
                         {% include '../svg/icon-hospital.twig' %}
                     </span>
                     <span>Centro</span>
                 </div>
-                <span class="filters__more u-flex--inline" id="js-showCenters">
-                    +
-                </span>
+                <div>
+                    <span class="filters__more u-flex--inline">
+                        {% include '../svg/icon-plus.twig' %}
+                    </span>
+                    <span class="filters__less u-flex--inline">
+                        {% include '../svg/icon-less.twig' %}
+                    </span>
+                </div>
             </div>
             <div class="filters__checks u-hide" id="selectCenter"></div>
         </li>

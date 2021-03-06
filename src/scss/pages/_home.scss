@@ -41,8 +41,9 @@
             height: auto;
             border: none;
             display: block;
+            max-width: 30%;
             position: relative;
-            width: get-rems(220px);
+            width: get-rems(400px);
         }
     }
 
@@ -54,13 +55,23 @@
         width: 100%;
 
         .cta {
-            width: 100%;;
+            width: 100%;
+        }
+
+        @include breakpoint($s768) {
+            padding: 0 space(.25);
+            position: relative;
         }
     }
 
     &__main {
         padding: 0 space();
         width: 100%;
+
+        @include breakpoint($s768) {
+            margin: 0 auto;
+            max-width: get-rems(1280px);
+        }
     }
 
     &__section {
