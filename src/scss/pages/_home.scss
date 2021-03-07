@@ -38,11 +38,9 @@
         z-index: 2;
 
         @include breakpoint($s768) {
-            height: auto;
             border: none;
-            display: block;
             max-width: 30%;
-            position: relative;
+            position: sticky;
             width: get-rems(400px);
         }
     }

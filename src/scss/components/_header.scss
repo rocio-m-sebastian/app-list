@@ -40,6 +40,7 @@
             background: transparent;
             height: auto;
             display: block;
+            opacity: 1;
             padding: 0;
             position: relative;
             text-align: right;
@@ -50,18 +51,20 @@
     &__menu-link {
         color: $c-neutro500;
         display: block;
+        opacity: 0;
         padding: space(.75);
         text-align: center;
         text-decoration: none;
-        opacity: 0;
         visibility: hidden;
 
         @include breakpoint($s768) {
             color: $c-white;
             cursor: pointer;
             display: inline-block;
+            opacity: 1;
             padding: 0;
             text-align: left;
+            visibility: visible;
         }
     }
 
