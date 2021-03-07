@@ -59,7 +59,7 @@
         }
 
         @include breakpoint($s768) {
-            padding: 0 space(.25);
+            padding: space(.25);
             position: relative;
         }
     }
@@ -87,6 +87,8 @@
         padding: space(.5);
         position: fixed;
         right: space();
+        visibility: visible;
+        transition: background-color 0.3s, opacity 0.4s, visibility 0.4s;
 
         svg {
             fill: $c-white;

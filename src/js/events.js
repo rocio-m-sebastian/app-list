@@ -205,7 +205,10 @@ export const events = () => {
   tableBody.addEventListener('click', (event) => {
     if (event.target.id === 'js-delete-row') {
       placesList.deletePlace(event.target.getAttribute('data-id'));
-      event.target.parentNode.remove();
+      event.target.parentNode.classList.add('u-hidden');
+      setTimeout(() => {
+        event.target.parentNode.remove();
+      }, 500);
     }
   });
 
@@ -224,11 +227,11 @@ export const events = () => {
   }); */
 
   htmlMenuClose.addEventListener('click', () => {
-    htmlHeader.classList.toggle('u-hide');
+    htmlHeader.classList.toggle('active');
   });
 
   htmlMenuHmburger.addEventListener('click', () => {
-    htmlHeader.classList.toggle('u-hide');
+    htmlHeader.classList.toggle('active');
   });
 };
 
@@ -238,12 +241,12 @@ htmlBtnTop.addEventListener('click', doScrolling.bind(null, '#js-tableview', 100
 
 htmlLinkList.addEventListener('click', () => {
   doScrolling('#js-table', 1000);
-  htmlHeader.classList.toggle('u-hide');
+  htmlHeader.classList.toggle('active');
   console.log('list');
 });
 
 htmlLinkHow.addEventListener('click', () => {
-  htmlHeader.classList.toggle('u-hide');
+  htmlHeader.classList.toggle('active');
   doScrolling('#js-section-how', 1000);
 });
 
@@ -253,16 +256,28 @@ window.onscroll = () => {
 };
 
 htmlFilterPlace.addEventListener('click', () => {
-  selectPlace.classList.toggle('u-hide');
+  selectPlace.classList.toggle('active');
   htmlFilterPlace.classList.toggle('u-active');
+  selectSubject.classList.remove('active');
+  htmlFilterSubject.classList.remove('u-active');
+  selectCenter.classList.remove('active');
+  htmlFilterCenter.classList.remove('u-active');
 });
 
 htmlFilterSubject.addEventListener('click', () => {
-  selectSubject.classList.toggle('u-hide');
+  selectSubject.classList.toggle('active');
   htmlFilterSubject.classList.toggle('u-active');
+  selectPlace.classList.remove('active');
+  htmlFilterPlace.classList.remove('u-active');
+  selectCenter.classList.remove('active');
+  htmlFilterCenter.classList.remove('u-active');
 });
 
 htmlFilterCenter.addEventListener('click', () => {
-  selectCenter.classList.toggle('u-hide');
+  selectCenter.classList.toggle('active');
   htmlFilterCenter.classList.toggle('u-active');
+  selectPlace.classList.remove('active');
+  htmlFilterPlace.classList.remove('u-active');
+  selectSubject.classList.remove('active');
+  htmlFilterSubject.classList.remove('u-active');
 });

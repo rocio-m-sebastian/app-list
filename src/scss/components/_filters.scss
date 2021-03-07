@@ -16,6 +16,7 @@
     }
 
     &__item {
+        cursor: pointer;
         margin: 0 .5rem;
         margin-bottom: space(.5);
         padding: space(.25) space(.5);
@@ -35,7 +36,15 @@
     }
 
     &__checks {
+        display: none;
+        opacity: 0;
         padding-left: get-rems(35px);
+
+        &.active {
+            display: block;
+            opacity: 1;
+            animation: fadeInFromNone 0.8s ease-out;
+        }
     }
 
     &__more,

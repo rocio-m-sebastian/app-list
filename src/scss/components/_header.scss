@@ -22,11 +22,19 @@
         height: 100vh;
         background: $c-white;
         left: 0;
+        opacity: .5;
         padding-top: space(2.5);
         position: fixed;
+        transform: translateY(-100%);
+        transition: all 0.3s ease-in-out;
         top: 0;
         width: 100%;
         z-index: 2;
+
+        &.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         @include breakpoint($s768) {
             background: transparent;
@@ -35,6 +43,7 @@
             padding: 0;
             position: relative;
             text-align: right;
+            transform: none;
         }
     }
 
@@ -44,9 +53,12 @@
         padding: space(.75);
         text-align: center;
         text-decoration: none;
+        opacity: 0;
+        visibility: hidden;
 
         @include breakpoint($s768) {
             color: $c-white;
+            cursor: pointer;
             display: inline-block;
             padding: 0;
             text-align: left;
@@ -56,6 +68,15 @@
     &__menu-link:not(:last-child) {
         @include breakpoint($s768) {
             margin-right: space(1.5);
+        }
+    }
+
+    &__menu.active {
+        .header__menu-close,
+        .header__menu-link {
+            opacity: 1;
+            transition: opacity 2s, visibility 2s;
+            visibility: visible;
         }
     }
 
@@ -80,6 +101,7 @@
     &__menu-close {
         top: space();
         height: get-rems(42px);
+        opacity: 0;
         right: space();
     }
 }

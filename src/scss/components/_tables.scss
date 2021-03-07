@@ -32,6 +32,12 @@ tfoot th {
     border-top: 2px solid $c-neutro800;
 }
 
+tr {
+    opacity: 1;
+    transition: opacity .5s, visibility .5s;
+    visibility: visible;
+}
+
 td {
     border-bottom: 1px solid $c-neutro800;
 }
@@ -40,6 +46,7 @@ th,
 td {
     padding: .5rem;
     text-align: center;
+    text-transform: uppercase;
 }
 
 caption {
