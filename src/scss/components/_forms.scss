@@ -134,6 +134,7 @@
 input,
 select {
     border: 1px solid $c-neutro300;
+    color: $c-neutro500;
     border-radius: get-rems(5px);
     padding: get-rems(10px);
 }

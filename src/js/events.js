@@ -25,9 +25,6 @@ const htmlBtnGolist = document.querySelector('#js-golist');
 const htmlBtnTop = document.querySelector('#js-btn-top');
 const htmlLinkHow = document.querySelector('#js-link-how');
 const htmlLinkList = document.querySelector('#js-link-list');
-// const htmlShowPlaces = document.querySelector('#js-showPlaces');
-// const htmlShowSubjects = document.querySelector('#js-showSubjects');
-// const htmlShowCenters = document.querySelector('#js-showCenters');
 const htmlFilterPlace = document.querySelector('#js-filter-place');
 const htmlFilterSubject = document.querySelector('#js-filter-subject');
 const htmlFilterCenter = document.querySelector('#js-filter-center');
@@ -52,9 +49,6 @@ export const events = () => {
     initialPlaces.filter(tagsList);
     cleanTable();
     initialPlaces.places.forEach(printTableRow);
-    if (htmlClearAll.classList.contains('u-hide')) {
-      htmlClearAll.classList.remove('u-hide');
-    }
   });
 
   const filterPaces = () => {
@@ -83,10 +77,6 @@ export const events = () => {
     initialPlaces.filter(tagsList);
     cleanTable();
     initialPlaces.places.forEach(printTableRow);
-
-    if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
-      htmlClearAll.classList.remove('u-hide');
-    }
   };
 
   const filterSubjects = () => {
@@ -115,9 +105,6 @@ export const events = () => {
     initialPlaces.filter(tagsList);
     cleanTable();
     initialPlaces.places.forEach(printTableRow);
-    if (htmlClearAll.classList.contains('u-hide')) {
-      htmlClearAll.classList.remove('u-hide');
-    }
   };
 
   const filterCenters = () => {
@@ -148,6 +135,7 @@ export const events = () => {
     initialPlaces.places.forEach(printTableRow);
 
     if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
+      console.log('btn');
       htmlClearAll.classList.remove('u-hide');
     }
   };
@@ -158,6 +146,9 @@ export const events = () => {
     filterCenters();
     filterSubjects();
     htmlFiltersBtn.innerText = 'Ver filtros';
+    if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
+      htmlClearAll.classList.remove('u-hide');
+    }
   });
 
   htmlTagsList.addEventListener('click', (event) => {
@@ -221,10 +212,6 @@ export const events = () => {
     }
     htmlFiltersAside.classList.toggle('u-hide');
   });
-
-  /* htmlFiltersClose.addEventListener('click', () => {
-    htmlFiltersAside.classList.toggle('u-hide');
-  }); */
 
   htmlMenuClose.addEventListener('click', () => {
     htmlHeader.classList.toggle('active');

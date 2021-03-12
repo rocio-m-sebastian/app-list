@@ -26,6 +26,11 @@
         }
     }
 
+    &__year {
+        margin-right: space(.5);
+        width: get-rems(147px);
+    }
+
     @include breakpoint($s768) {
         background-position-y: center;
     }
