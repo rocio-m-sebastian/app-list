@@ -56,7 +56,7 @@ const createSelectOptionsSubjects = () => {
 const getListCenters = () => {
   const list = JSON.parse(localStorage.getItem('list'));
   const centers = list.map((element) => {
-    return element.centro.nombre;
+    return element.centro;
   });
   return centers;
 };
