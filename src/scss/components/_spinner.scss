@@ -1,0 +1,16 @@
+.loader,
+.loader:after {
+  border-radius: 50%;
+  height: get-rems(40px);
+  width: get-rems(40px);
+}
+.loader {
+  animation: load8 1.1s infinite linear;
+  border-bottom: get-rems(10px) solid $c-neutro300;
+  border-left: get-rems(10px) solid $c-secondary200;
+  border-right: get-rems(10px) solid $c-neutro300;
+  border-top: get-rems(10px) solid $c-neutro300;
+  margin: 60px auto;
+  position: relative;;
+  transform: translateZ(0);
+}

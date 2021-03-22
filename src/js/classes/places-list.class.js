@@ -1,8 +1,14 @@
-import { getData } from '../http-service';
-import { Place } from './place.class';
+// import { getData } from '../http-service';
+// import { Place } from './place.class';
+import { saveListLocalStorage } from '../save-localstorage';
 import { printTableRow } from '../print-table';
+import { createSelectOptionsCities, createSelectOptionsSubjects, createSelectOptionsCenters } from '../populate-selects';
 
 const inputNumber = document.querySelector('#js-puesto');
+const htmlSpinner = document.querySelector('.table-wiew__spinner');
+const htmlLastTableRow = document.querySelector('.table-wiew__last');
+const htmlFiltersBtn = document.querySelector('#js-hide-aside');
+const htmlDownloadBtn = document.querySelector('#js-download');
 // import { tagsList } from '../../index';
 
 export class PlacesList {
@@ -187,23 +193,25 @@ export class PlacesList {
   }
 
   getSessionStorage() {
-    this.places = [];
-    const setData = async() => {
-      (await getData()).forEach((item) => {
-        const row = new Place(item);
-        this.places.push(row);
-        this.saveSessionStorage();
+    /* setData(); */
+    console.log('set data');
+    saveListLocalStorage()
+      .then(() => {
+        window.sessionStorage.setItem('places', localStorage.getItem('list'));
+        this.places = JSON.parse(sessionStorage.getItem('places'));
+        this.places.forEach(printTableRow);
+        createSelectOptionsCities();
+        createSelectOptionsSubjects();
+        createSelectOptionsCenters();
+      })
+      .then(() => {
+        htmlSpinner.classList.add('u-hide');
+        htmlLastTableRow.classList.remove('u-hide');
+        htmlFiltersBtn.removeAttribute('disabled');
+        htmlDownloadBtn.removeAttribute('disabled');
+      })
+      .catch((error) => {
+        console.log(`Handling error as we received ${error}`);
       });
-      this.places.forEach(printTableRow);
-    };
-    if (sessionStorage.getItem('places')) {
-      console.log('data');
-      this.places = JSON.parse(sessionStorage.getItem('places'));
-      this.places.forEach(printTableRow);
-    } else {
-      setData();
-    }
-
-    // this.places = this.places.map(Place.fromJson);
   }
 }

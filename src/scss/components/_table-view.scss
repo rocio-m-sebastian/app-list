@@ -4,4 +4,9 @@
         border-radius: get-rems(5px);
         overflow-x: scroll;
     }
+
+    &__spinner {
+        height: get-rems(100px);
+        position: relative;
+    }
 }

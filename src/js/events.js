@@ -28,6 +28,45 @@ const htmlLinkList = document.querySelector('#js-link-list');
 const htmlFilterPlace = document.querySelector('#js-filter-place');
 const htmlFilterSubject = document.querySelector('#js-filter-subject');
 const htmlFilterCenter = document.querySelector('#js-filter-center');
+const htmlSpinner = document.querySelector('.table-wiew__spinner');
+const htmlLastTableRow = document.querySelector('.table-wiew__last');
+
+const initPlaces = () => {
+  placesList.resetInitialPlaces();
+  const initialPlaces = placesList;
+  initialPlaces.filter(tagsList);
+  cleanTable();
+  setTimeout(() => {
+    const start = performance.now();
+    initialPlaces.places.forEach(printTableRow);
+    const end = performance.now();
+    console.log(end - start);
+    htmlSpinner.classList.add('u-hide');
+    htmlLastTableRow.classList.remove('u-hide');
+  }, 500);
+};
+
+const checkedFiltersToTags = (inputType, val) => {
+  if (tagsList.tags.length) {
+    const checkboxes = inputType.querySelectorAll('input[type=checkbox]:checked');
+    for (let i = 0; i < checkboxes.length; i += 1) {
+      if (!tagsList.tags.filter((element) => element.val === checkboxes[i].value).length > 0) {
+        const newTag = new Tag(checkboxes[i].value, val);
+        tagsList.addTag(newTag);
+        createHtmlTag(newTag, val);
+      }
+      checkboxes[i].disabled = true;
+    }
+  } else {
+    const checkboxes = inputType.querySelectorAll('input[type=checkbox]:checked');
+    for (let i = 0; i < checkboxes.length; i += 1) {
+      const newTag = new Tag(checkboxes[i].value, val);
+      tagsList.addTag(newTag);
+      createHtmlTag(newTag, val);
+      checkboxes[i].disabled = true;
+    }
+  }
+};
 
 export const events = () => {
   // Events tags
@@ -44,107 +83,35 @@ export const events = () => {
       createHtmlTag(newTag, 'number');
     }
     // filter by tags
-    placesList.resetInitialPlaces();
-    const initialPlaces = placesList;
-    initialPlaces.filter(tagsList);
-    cleanTable();
-    initialPlaces.places.forEach(printTableRow);
+    initPlaces();
   });
 
-  const filterPaces = () => {
-    if (tagsList.tags.length) {
-      const checkboxes = selectPlace.querySelectorAll('input[type=checkbox]:checked');
-      for (let i = 0; i < checkboxes.length; i += 1) {
-        if (!tagsList.tags.filter((element) => element.val === checkboxes[i].value).length > 0) {
-          const newTag = new Tag(checkboxes[i].value, 'place');
-          tagsList.addTag(newTag);
-          createHtmlTag(newTag, 'place');
-        }
-        checkboxes[i].disabled = true;
-      }
-    } else {
-      const checkboxes = selectPlace.querySelectorAll('input[type=checkbox]:checked');
-      for (let i = 0; i < checkboxes.length; i += 1) {
-        const newTag = new Tag(checkboxes[i].value, 'place');
-        tagsList.addTag(newTag);
-        createHtmlTag(newTag, 'place');
-        checkboxes[i].disabled = true;
-      }
-    }
+  const filterPlaces = () => {
+    checkedFiltersToTags(selectPlace, 'place');
     // filter by tags
-    placesList.resetInitialPlaces();
-    const initialPlaces = placesList;
-    initialPlaces.filter(tagsList);
-    cleanTable();
-    initialPlaces.places.forEach(printTableRow);
+    initPlaces();
   };
 
   const filterSubjects = () => {
-    if (tagsList.tags.length) {
-      const checkboxes = selectSubject.querySelectorAll('input[type=checkbox]:checked');
-      for (let i = 0; i < checkboxes.length; i += 1) {
-        if (!tagsList.tags.filter((element) => element.val === checkboxes[i].value).length > 0) {
-          const newTag = new Tag(checkboxes[i].value, 'subject');
-          tagsList.addTag(newTag);
-          createHtmlTag(newTag, 'subject');
-        }
-        checkboxes[i].disabled = true;
-      }
-    } else {
-      const checkboxes = selectSubject.querySelectorAll('input[type=checkbox]:checked');
-      for (let i = 0; i < checkboxes.length; i += 1) {
-        const newTag = new Tag(checkboxes[i].value, 'subject');
-        tagsList.addTag(newTag);
-        createHtmlTag(newTag, 'subject');
-        checkboxes[i].disabled = true;
-      }
-    }
+    checkedFiltersToTags(selectSubject, 'subject');
     // filter by tags
-    placesList.resetInitialPlaces();
-    const initialPlaces = placesList;
-    initialPlaces.filter(tagsList);
-    cleanTable();
-    initialPlaces.places.forEach(printTableRow);
+    initPlaces();
   };
 
   const filterCenters = () => {
-    if (tagsList.tags.length) {
-      const checkboxes = selectCenter.querySelectorAll('input[type=checkbox]:checked');
-      for (let i = 0; i < checkboxes.length; i += 1) {
-        if (!tagsList.tags.filter((element) => element.val === checkboxes[i].value).length > 0) {
-          const newTag = new Tag(checkboxes[i].value, 'center');
-          tagsList.addTag(newTag);
-          createHtmlTag(newTag, 'center');
-        }
-        checkboxes[i].disabled = true;
-      }
-    } else {
-      const checkboxes = selectCenter.querySelectorAll('input[type=checkbox]:checked');
-      for (let i = 0; i < checkboxes.length; i += 1) {
-        const newTag = new Tag(checkboxes[i].value, 'center');
-        tagsList.addTag(newTag);
-        createHtmlTag(newTag, 'center');
-        checkboxes[i].disabled = true;
-      }
-    }
+    checkedFiltersToTags(selectCenter, 'center');
     // filter by tags
-    placesList.resetInitialPlaces();
-    const initialPlaces = placesList;
-    initialPlaces.filter(tagsList);
-    cleanTable();
-    initialPlaces.places.forEach(printTableRow);
-
-    if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
-      console.log('btn');
-      htmlClearAll.classList.remove('u-hide');
-    }
+    initPlaces();
   };
 
   htmlFiltersClose.addEventListener('click', () => {
     htmlFiltersAside.classList.toggle('u-hide');
-    filterPaces();
-    filterCenters();
+    filterPlaces();
     filterSubjects();
+    filterCenters();
+    if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
+      htmlClearAll.classList.remove('u-hide');
+    }
     htmlFiltersBtn.innerText = 'Ver filtros';
     if (tagsList.tags.length && htmlClearAll.classList.contains('u-hide')) {
       htmlClearAll.classList.remove('u-hide');
@@ -164,15 +131,12 @@ export const events = () => {
         }
       }
       document.querySelectorAll('input[type="number"]').checked = false;
-    }
-    // filter by tags
-    placesList.resetInitialPlaces();
-    const initialPlaces = placesList;
-    initialPlaces.filter(tagsList);
-    cleanTable();
-    initialPlaces.places.forEach(printTableRow);
-    if (tagsList.tags.length < 1) {
-      htmlClearAll.classList.add('u-hide');
+      // filter by tags
+      initPlaces();
+
+      if (tagsList.tags.length < 1) {
+        htmlClearAll.classList.add('u-hide');
+      }
     }
   });
 

@@ -21,6 +21,7 @@ const createCheckboxes = (array, container) => {
 // select CITIES
 const getListCities = () => {
   const list = JSON.parse(localStorage.getItem('list'));
+  console.log(list);
   const cities = list.map((element) => {
     return element.localidad;
   });

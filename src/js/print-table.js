@@ -2,6 +2,8 @@
 // import { placesList } from '../index';
 
 const tableBody = document.getElementById('js-table-body');
+const htmlSpinner = document.querySelector('.table-wiew__spinner');
+const htmlLastTableRow = document.querySelector('.table-wiew__last');
 
 const printTableRow = (element) => {
   // console.log(element);
@@ -20,13 +22,9 @@ const printTableRow = (element) => {
 
 const cleanTable = () => {
   tableBody.innerHTML = '';
+  htmlSpinner.classList.remove('u-hide');
+  htmlLastTableRow.classList.add('u-hide');
 };
-
-// export const init = async() => {
-// saveListLocalStorage();
-// (await getListLocalStorage()).forEach(printTableRow);
-// (await getData()).forEach(printTableRow);
-// };
 
 export {
   printTableRow,

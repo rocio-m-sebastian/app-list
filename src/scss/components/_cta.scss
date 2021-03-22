@@ -29,9 +29,9 @@
 
     &[disabled],
     &:disabled {
-        background-color: $c-neutro200;
-        border-color: $c-neutro200;
-        color: $c-neutro600;
+        background-color: $c-neutro700;
+        border-color: $c-neutro700;
+        color: $c-white;
         pointer-events: none;
     }
 
@@ -45,14 +45,6 @@
             background-color: transparent;
             border: 2px solid $c-secondary100;
             color: $c-secondary100;
-        }
-
-        &[disabled],
-        &:disabled {
-            background-color: $c-neutro200;
-            border-color: $c-neutro200;
-            color: $c-neutro600;
-            pointer-events: none;
         }
     }
 
