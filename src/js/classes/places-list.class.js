@@ -1,5 +1,3 @@
-// import { getData } from '../http-service';
-// import { Place } from './place.class';
 import { printTableRow } from '../print-table';
 import { createSelectOptionsCities, createSelectOptionsSubjects, createSelectOptionsCenters } from '../populate-selects';
 import { saveListLocalStorage } from '../save-localstorage';
@@ -9,7 +7,6 @@ const htmlSpinner = document.querySelector('.table-wiew__spinner');
 const htmlLastTableRow = document.querySelector('.table-wiew__last');
 const htmlFiltersBtn = document.querySelector('#js-hide-aside');
 const htmlDownloadBtn = document.querySelector('#js-download');
-// import { tagsList } from '../../index';
 
 export class PlacesList {
   constructor() {
@@ -30,20 +27,6 @@ export class PlacesList {
     const numeroNum = parseInt(numero, 10);
     this.places = this.places.filter((place) => parseInt(place.numero, 10) !== numeroNum);
     this.saveSessionStorage();
-  }
-
-  resetInitialPlaces() {
-    this.places = [];
-    /* const setData = async() => {
-      (await getData()).forEach((item) => {
-        const row = new Place(item);
-        this.places.push(row);
-      }); */
-    // this.places = JSON.parse(localStorage.getItem('list'));
-    window.sessionStorage.setItem('places', localStorage.getItem('list'));
-    this.places = JSON.parse(sessionStorage.getItem('places'));
-    // };
-    // setData();
   }
 
   filter(tagsList) {
@@ -188,23 +171,28 @@ export class PlacesList {
   }
 
   filterSubject(tagsArray) {
-    console.log('filters', tagsArray);
-    console.log('thisplaces', this.places);
     this.places = this.places.filter((place) => tagsArray.indexOf(place.especialidad) >= 0);
     this.saveSessionStorage();
+  }
+
+  resetInitialPlaces() {
+    this.places = [];
+    window.sessionStorage.setItem('places', localStorage.getItem('list'));
+    this.places = JSON.parse(sessionStorage.getItem('places'));
+    return this.places;
   }
 
   saveSessionStorage() {
     sessionStorage.setItem('places', JSON.stringify(this.places));
   }
 
-  getSessionStorage() {
-    /* setData(); */
-    console.log('set data');
-
-    this.places = (sessionStorage.getItem('places'))
-      ? JSON.parse(sessionStorage.getItem('places'))
-      : this.resetInitialPlaces();
+  async getSessionStorage() {
+    const i = () => {
+      this.places = (sessionStorage.getItem('places'))
+        ? JSON.parse(sessionStorage.getItem('places'))
+        : this.resetInitialPlaces();
+    };
+    await i();
 
     const printData = () => {
       this.places.forEach(printTableRow);
@@ -213,8 +201,8 @@ export class PlacesList {
       createSelectOptionsCenters();
     };
 
-    const start = async() => {
-      await printData();
+    const start = () => {
+      printData();
       htmlSpinner.classList.add('u-hide');
       htmlLastTableRow.classList.remove('u-hide');
       htmlFiltersBtn.removeAttribute('disabled');
@@ -222,25 +210,5 @@ export class PlacesList {
     };
 
     start();
-
-    /* saveListLocalStorage()
-      .then(() => {
-        window.sessionStorage.setItem('places', localStorage.getItem('list'));
-        this.places = JSON.parse(sessionStorage.getItem('places'));
-        this.places.forEach(printTableRow);
-        createSelectOptionsCities();
-        createSelectOptionsSubjects();
-        createSelectOptionsCenters();
-      })
-      .then(() => {
-        htmlSpinner.classList.add('u-hide');
-        htmlLastTableRow.classList.remove('u-hide');
-        htmlFiltersBtn.removeAttribute('disabled');
-        htmlDownloadBtn.removeAttribute('disabled');
-      })
-      .catch((error) => {
-        console.log(`Handling error as we received ${error}`);
-      });
-    */
   }
 }

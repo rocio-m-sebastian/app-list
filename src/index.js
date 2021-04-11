@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   tagsList.tags.forEach(createHtmlTag);
   tagsList.tags.forEach((tag) => {
     const inputsList = document.querySelectorAll('input[type="checkbox"]');
-    console.log('tag.val', tag.val);
-    console.log('inputsList.length', inputsList.length);
     for (let i = 0; i < inputsList.length; i += 1) {
       if (inputsList[i].value === tag.val) {
         inputsList[i].checked = true;
