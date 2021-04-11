@@ -11,7 +11,6 @@ const selectPlace = document.querySelector('#selectPlace');
 const selectSubject = document.querySelector('#selectSubject');
 const selectCenter = document.querySelector('#selectCenter');
 const htmlTagsList = document.querySelector('#js-applied-filters-list');
-const htmlClearTags = document.querySelector('.clear');
 const tableBody = document.getElementById('js-table-body');
 const tagsContainer = document.querySelector('.applied-filters-list__tags');
 const htmlClearAll = document.querySelector('#js-clearall');
@@ -36,14 +35,21 @@ const initPlaces = () => {
   const initialPlaces = placesList;
   initialPlaces.filter(tagsList);
   cleanTable();
-  setTimeout(() => {
+
+  const printData = () => {
     const start = performance.now();
     initialPlaces.places.forEach(printTableRow);
     const end = performance.now();
     console.log(end - start);
+  };
+
+  const start = async() => {
+    await printData();
     htmlSpinner.classList.add('u-hide');
     htmlLastTableRow.classList.remove('u-hide');
-  }, 500);
+  };
+
+  start();
 };
 
 const checkedFiltersToTags = (inputType, val) => {
@@ -140,15 +146,15 @@ export const events = () => {
     }
   });
 
-  htmlClearTags.addEventListener('click', () => {
+  htmlClearAll.addEventListener('click', () => {
     tagsList.deleteAllTags();
     const elements = tagsContainer.getElementsByClassName('applied-filter');
     while (elements.length > 0) {
       elements[0].parentNode.removeChild(elements[0]);
     }
-    console.log(tagsContainer.children);
     htmlClearAll.classList.add('u-hide');
-    placesList.resetInitialPlaces();
+    // placesList.resetInitialPlaces();
+    initPlaces();
     const inputsList = document.querySelectorAll('input[type="checkbox"]');
     for (let i = 0; i < inputsList.length; i += 1) {
       inputsList[i].checked = false;

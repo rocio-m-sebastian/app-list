@@ -1,8 +1,8 @@
 // import { getData } from '../http-service';
 // import { Place } from './place.class';
-import { saveListLocalStorage } from '../save-localstorage';
 import { printTableRow } from '../print-table';
 import { createSelectOptionsCities, createSelectOptionsSubjects, createSelectOptionsCenters } from '../populate-selects';
+import { saveListLocalStorage } from '../save-localstorage';
 
 const inputNumber = document.querySelector('#js-puesto');
 const htmlSpinner = document.querySelector('.table-wiew__spinner');
@@ -14,7 +14,11 @@ const htmlDownloadBtn = document.querySelector('#js-download');
 export class PlacesList {
   constructor() {
     // this.places = [];
-    this.getSessionStorage();
+    const init = async() => {
+      await saveListLocalStorage();
+      this.getSessionStorage();
+    };
+    init();
   }
 
   addPlace(place) {
@@ -35,7 +39,9 @@ export class PlacesList {
         const row = new Place(item);
         this.places.push(row);
       }); */
-    this.places = JSON.parse(localStorage.getItem('list'));
+    // this.places = JSON.parse(localStorage.getItem('list'));
+    window.sessionStorage.setItem('places', localStorage.getItem('list'));
+    this.places = JSON.parse(sessionStorage.getItem('places'));
     // };
     // setData();
   }
@@ -195,7 +201,29 @@ export class PlacesList {
   getSessionStorage() {
     /* setData(); */
     console.log('set data');
-    saveListLocalStorage()
+
+    this.places = (sessionStorage.getItem('places'))
+      ? JSON.parse(sessionStorage.getItem('places'))
+      : this.resetInitialPlaces();
+
+    const printData = () => {
+      this.places.forEach(printTableRow);
+      createSelectOptionsCities();
+      createSelectOptionsSubjects();
+      createSelectOptionsCenters();
+    };
+
+    const start = async() => {
+      await printData();
+      htmlSpinner.classList.add('u-hide');
+      htmlLastTableRow.classList.remove('u-hide');
+      htmlFiltersBtn.removeAttribute('disabled');
+      htmlDownloadBtn.removeAttribute('disabled');
+    };
+
+    start();
+
+    /* saveListLocalStorage()
       .then(() => {
         window.sessionStorage.setItem('places', localStorage.getItem('list'));
         this.places = JSON.parse(sessionStorage.getItem('places'));
@@ -213,5 +241,6 @@ export class PlacesList {
       .catch((error) => {
         console.log(`Handling error as we received ${error}`);
       });
+    */
   }
 }
