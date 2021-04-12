@@ -5,6 +5,7 @@ import { printTableRow, cleanTable } from './print-table';
 import { doScrolling } from './scrollTo';
 import { setSticky } from './sticky';
 import { showBtn } from './showBtn';
+import { createSelectOptionsCenters } from './populate-selects';
 
 const inputNumber = document.querySelector('#js-puesto');
 const selectPlace = document.querySelector('#selectPlace');
@@ -38,7 +39,17 @@ const initPlaces = () => {
 
   const printData = () => {
     const start = performance.now();
-    initialPlaces.places.forEach(printTableRow);
+    console.log('places', initialPlaces.places);
+    if (initialPlaces.places.length) {
+      initialPlaces.places.forEach(printTableRow);
+    } else {
+      const message = `
+        <td colspan="4" style="height: 300px;">No hay resultados para esta búsqueda. </br>Prueba otra combinación de filtros.</td>
+      `;
+      tableBody.innerHTML = message;
+      console.log(htmlLastTableRow);
+      htmlLastTableRow.classList.add('u-hide');
+    }
     const end = performance.now();
     console.log(end - start);
   };
@@ -46,7 +57,9 @@ const initPlaces = () => {
   const start = async() => {
     await printData();
     htmlSpinner.classList.add('u-hide');
-    htmlLastTableRow.classList.remove('u-hide');
+    if (initialPlaces.places.length) {
+      htmlLastTableRow.classList.remove('u-hide');
+    }
   };
 
   start();
@@ -153,7 +166,6 @@ export const events = () => {
       elements[0].parentNode.removeChild(elements[0]);
     }
     htmlClearAll.classList.add('u-hide');
-    // placesList.resetInitialPlaces();
     initPlaces();
     const inputsList = document.querySelectorAll('input[type="checkbox"]');
     for (let i = 0; i < inputsList.length; i += 1) {
@@ -199,7 +211,6 @@ htmlBtnTop.addEventListener('click', doScrolling.bind(null, '#js-tableview', 100
 htmlLinkList.addEventListener('click', () => {
   doScrolling('#js-table', 1000);
   htmlHeader.classList.toggle('active');
-  console.log('list');
 });
 
 htmlLinkHow.addEventListener('click', () => {
@@ -212,15 +223,6 @@ window.onscroll = () => {
   showBtn();
 };
 
-htmlFilterPlace.addEventListener('click', () => {
-  selectPlace.classList.toggle('active');
-  htmlFilterPlace.classList.toggle('u-active');
-  selectSubject.classList.remove('active');
-  htmlFilterSubject.classList.remove('u-active');
-  selectCenter.classList.remove('active');
-  htmlFilterCenter.classList.remove('u-active');
-});
-
 htmlFilterSubject.addEventListener('click', () => {
   selectSubject.classList.toggle('active');
   htmlFilterSubject.classList.toggle('u-active');
@@ -230,7 +232,17 @@ htmlFilterSubject.addEventListener('click', () => {
   htmlFilterCenter.classList.remove('u-active');
 });
 
+htmlFilterPlace.addEventListener('click', () => {
+  selectPlace.classList.toggle('active');
+  htmlFilterPlace.classList.toggle('u-active');
+  selectSubject.classList.remove('active');
+  htmlFilterSubject.classList.remove('u-active');
+  selectCenter.classList.remove('active');
+  htmlFilterCenter.classList.remove('u-active');
+});
+
 htmlFilterCenter.addEventListener('click', () => {
+  createSelectOptionsCenters();
   selectCenter.classList.toggle('active');
   htmlFilterCenter.classList.toggle('u-active');
   selectPlace.classList.remove('active');

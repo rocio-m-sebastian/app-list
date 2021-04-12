@@ -7,7 +7,6 @@ const saveListLocalStorage = async() => {
 
 const getListLocalStorage = () => {
   const list = JSON.parse(localStorage.getItem('list'));
-  console.log(list);
   return list;
 };
 

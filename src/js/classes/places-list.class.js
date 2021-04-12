@@ -1,5 +1,4 @@
 import { printTableRow } from '../print-table';
-import { createSelectOptionsCities, createSelectOptionsSubjects, createSelectOptionsCenters } from '../populate-selects';
 import { saveListLocalStorage } from '../save-localstorage';
 
 const inputNumber = document.querySelector('#js-puesto');
@@ -57,7 +56,7 @@ export class PlacesList {
         this.places = this.places.filter(
           (place) => tagsVals.indexOf(place.localidad) >= 0
           || tagsVals.indexOf(place.especialidad) >= 0
-          || tagsVals.indexOf(place.centro.nombre) >= 0,
+          || tagsVals.indexOf(place.centro) >= 0,
         );
       }
     } else if (tagsVals.length > 1) {
@@ -69,7 +68,7 @@ export class PlacesList {
         this.places = this.places.filter(
           (place) => tagsVals.indexOf(place.localidad) >= 0
           && tagsVals.indexOf(place.especialidad) >= 0
-          && tagsVals.indexOf(place.centro.nombre) >= 0
+          && tagsVals.indexOf(place.centro) >= 0
           && parseInt(place.numero, 10) >= parseInt(position, 10),
         );
       } else if (tagsList.tags.some((e) => e.type === 'place')
@@ -79,7 +78,7 @@ export class PlacesList {
         this.places = this.places.filter(
           (place) => tagsVals.indexOf(place.localidad) >= 0
           && tagsVals.indexOf(place.especialidad) >= 0
-          && tagsVals.indexOf(place.centro.nombre) >= 0,
+          && tagsVals.indexOf(place.centro) >= 0,
         );
       } else if (tagsList.tags.some((e) => e.type === 'place')
          && tagsList.tags.some((e) => e.type === 'center')
@@ -87,7 +86,7 @@ export class PlacesList {
         console.log('three types 2');
         this.places = this.places.filter(
           (place) => tagsVals.indexOf(place.localidad) >= 0
-          && tagsVals.indexOf(place.centro.nombre) >= 0
+          && tagsVals.indexOf(place.centro) >= 0
           && parseInt(place.numero, 10) >= parseInt(position, 10),
         );
       } else if (tagsList.tags.some((e) => e.type === 'place')
@@ -104,8 +103,8 @@ export class PlacesList {
          && tagsList.tags.some((e) => e.type === 'number')) {
         console.log('three types 4');
         this.places = this.places.filter(
-          (place) => tagsVals.indexOf(place.centro.nombre) >= 0
-          && tagsVals.indexOf(place.centro.nombre) >= 0
+          (place) => tagsVals.indexOf(place.centro) >= 0
+          && tagsVals.indexOf(place.centro) >= 0
           && parseInt(place.numero, 10) >= parseInt(position, 10),
         );
       } else if (tagsList.tags.some((e) => e.type === 'place')
@@ -120,14 +119,14 @@ export class PlacesList {
         console.log('two types 2');
         this.places = this.places.filter(
           (place) => tagsVals.indexOf(place.especialidad) >= 0
-          && tagsVals.indexOf(place.centro.nombre) >= 0,
+          && tagsVals.indexOf(place.centro) >= 0,
         );
       } else if (tagsList.tags.some((e) => e.type === 'center')
          && tagsList.tags.some((e) => e.type === 'place')) {
         console.log('two types 3');
         this.places = this.places.filter(
           (place) => tagsVals.indexOf(place.localidad) >= 0
-          && tagsVals.indexOf(place.centro.nombre) >= 0,
+          && tagsVals.indexOf(place.centro) >= 0,
         );
       } else if (tagsList.tags.some((e) => e.type === 'subject')
          && tagsList.tags.some((e) => e.type === 'number')) {
@@ -147,7 +146,7 @@ export class PlacesList {
          && tagsList.tags.some((e) => e.type === 'number')) {
         console.log('two types 6');
         this.places = this.places.filter(
-          (place) => tagsVals.indexOf(place.centro.nombre) >= 0
+          (place) => tagsVals.indexOf(place.centro) >= 0
           && parseInt(place.numero, 10) >= parseInt(position, 10),
         );
       } else if (tagsList.tags.some((e) => e.type === 'place')) {
@@ -163,7 +162,7 @@ export class PlacesList {
       } else if (tagsList.tags.some((e) => e.type === 'center')) {
         console.log('one type');
         this.places = this.places.filter(
-          (place) => tagsVals.indexOf(place.centro.nombre) >= 0,
+          (place) => tagsVals.indexOf(place.centro) >= 0,
         );
       }
     }
@@ -196,9 +195,6 @@ export class PlacesList {
 
     const printData = () => {
       this.places.forEach(printTableRow);
-      createSelectOptionsCities();
-      createSelectOptionsSubjects();
-      createSelectOptionsCenters();
     };
 
     const start = () => {

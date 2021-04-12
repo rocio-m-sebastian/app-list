@@ -11,25 +11,6 @@
             <input value="" type="number" id="js-puesto" name="puesto"  min="1" max="12700">
         </li>
         <li class="filters__item">
-            <div class="filters__place u-flex u-flex--justify-between" id="js-filter-place">
-                <div class="u-flex">
-                    <span>
-                        {% include '../svg/icon-location.twig' %}
-                    </span>
-                    <span>Provincia</span>
-                </div>
-                <div>
-                    <span class="filters__more u-flex--inline">
-                        {% include '../svg/icon-plus.twig' %}
-                    </span>
-                    <span class="filters__less u-flex--inline">
-                        {% include '../svg/icon-less.twig' %}
-                    </span>
-                </div>
-            </div>
-            <div class="filters__checks" id="selectPlace"></div>
-        </li>
-        <li class="filters__item">
             <div class="filters__subject u-flex u-flex--justify-between" id="js-filter-subject">
                 <div class="u-flex">
                     <span class="wrapper-svg u-icon u-flex--inline">
@@ -47,6 +28,25 @@
                 </div>
             </div>
             <div class="filters__checks" id="selectSubject"></div>
+        </li>
+        <li class="filters__item">
+            <div class="filters__place u-flex u-flex--justify-between" id="js-filter-place">
+                <div class="u-flex">
+                    <span>
+                        {% include '../svg/icon-location.twig' %}
+                    </span>
+                    <span>Provincia</span>
+                </div>
+                <div>
+                    <span class="filters__more u-flex--inline">
+                        {% include '../svg/icon-plus.twig' %}
+                    </span>
+                    <span class="filters__less u-flex--inline">
+                        {% include '../svg/icon-less.twig' %}
+                    </span>
+                </div>
+            </div>
+            <div class="filters__checks" id="selectPlace"></div>
         </li>
         <li class="filters__item">
             <div class="filters__center u-flex u-flex--justify-between" id="js-filter-center">

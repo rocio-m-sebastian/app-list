@@ -21,7 +21,6 @@ const createCheckboxes = (array, container) => {
 // select CITIES
 const getListCities = () => {
   const list = JSON.parse(localStorage.getItem('list'));
-  console.log(list);
   const cities = list.map((element) => {
     return element.localidad;
   });
@@ -55,8 +54,18 @@ const createSelectOptionsSubjects = () => {
 
 // select CENTERS
 const getListCenters = () => {
+  const placesSelected = [];
+  const placeCheckboxes = selectPlace.querySelectorAll('input[type=checkbox]:checked');
+  const checkedCitiesFilters = () => {
+    for (let i = 0; i < placeCheckboxes.length; i += 1) {
+      placesSelected.push(placeCheckboxes[i].value);
+    }
+    return placesSelected;
+  };
+  checkedCitiesFilters();
   const list = JSON.parse(localStorage.getItem('list'));
-  const centers = list.map((element) => {
+  const elements = list.filter((element) => placesSelected.indexOf(element.localidad) >= 0);
+  const centers = elements.map((element) => {
     return element.centro;
   });
   return centers;
@@ -67,7 +76,16 @@ const getCenters = () => {
 };
 
 const createSelectOptionsCenters = () => {
-  createCheckboxes(getCenters(), selectCenter);
+  const placeCheckboxes = selectPlace.querySelectorAll('input[type=checkbox]:checked');
+  if (placeCheckboxes.length) {
+    selectCenter.innerHTML = '';
+    createCheckboxes(getCenters(), selectCenter);
+  } else {
+    const message = `
+      <p class="u-message">Selecciona una o varias provincias</p>
+    `;
+    selectCenter.innerHTML = message;
+  }
 };
 
 export {

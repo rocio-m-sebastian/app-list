@@ -40,3 +40,10 @@
     opacity: 0;
     visibility: hidden;
 }
+
+.u-message {
+    background-color: $c-message;
+    border-radius: get-rems(5px);
+    color: $c-success;
+    padding: space();
+}
