@@ -1,5 +1,6 @@
 import { printTableRow } from '../print-table';
 import { saveListLocalStorage } from '../save-localstorage';
+import { createSelectOptionsCities, createSelectOptionsSubjects, createSelectOptionsCenters } from '../populate-selects';
 
 const inputNumber = document.querySelector('#js-puesto');
 const htmlSpinner = document.querySelector('.table-wiew__spinner');
@@ -199,6 +200,9 @@ export class PlacesList {
 
     const start = () => {
       printData();
+      createSelectOptionsCities();
+      createSelectOptionsSubjects();
+      createSelectOptionsCenters();
       htmlSpinner.classList.add('u-hide');
       htmlLastTableRow.classList.remove('u-hide');
       htmlFiltersBtn.removeAttribute('disabled');
